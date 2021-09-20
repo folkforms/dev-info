@@ -1,0 +1,30 @@
+{
+  "name": "@folkforms/dev",
+  "version": "0.0.0",
+  "description": "Dev info and shortcuts",
+  "author": "folkforms",
+  "license": "MIT",
+  "main": "dev.js",
+  "bin": {
+    "dev": "./cli.js"
+  },
+  "scripts": {
+    "dev": "node cli.js",
+    "dev2": "node cli.js -c example.config.json",
+    "release": "npm-release",
+    "generate-tests": "markdown-to-x -i=tests/test-cases/*.md -s=tests/structure.md -t=tests/template.js -o=tests/gen -e=.test.js",
+    "test": "yarn generate-tests && jest"
+  },
+  "devDependencies": {
+    "@folkforms/line-endings": "^0.0.10",
+    "@folkforms/npm-release": "^0.0.22",
+    "jest": "^27.2.0",
+    "markdown-to-x": "^0.0.13"
+  },
+  "dependencies": {
+    "@folkforms/file-io": "^0.2.4",
+    "commander": "^8.2.0",
+    "dummy-shells": "^0.0.7",
+    "shelljs": "^0.8.4"
+  }
+}

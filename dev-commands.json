@@ -1,0 +1,49 @@
+{
+  "topics": {
+    "front-end": {
+      "workflow": {
+        "description": "Front-end workflow:\n\n1. Foo\n2. Bar"
+      },
+      "build": {
+        "description": "Build a front-end app",
+        "executable": "bend yarn"
+      },
+      "tests": {
+        "description": "Runs the front-end unit tests",
+        "executable": "open <front-end test url>"
+      },
+      "run": {
+        "description": "Run a front-end app",
+        "executable": "bend reactor serve"
+      }
+    },
+    "back-end": {
+      "workflow": {
+        "description": "Back-end workflow:\n\n1. Foo\n2. Bar"
+      },
+      "build": {
+        "description": "Build a back-end service",
+        "executable": "FIXME Build a back-end service"
+      },
+      "tests": {
+        "description": "Runs the back-end unit tests",
+        "executable": "mvn test"
+      },
+      "run": {
+        "description": "Run a back-end service",
+        "executable": "FIXME IntelliJ settings..."
+      }
+    }
+  },
+  "aliases": [
+    {
+      "front-end": [ "fe", "frontend", "app", "apps" ]
+    },
+    {
+      "back-end": [ "be", "backend", "api", "apis" ]
+    },
+    {
+      "tests": [ "test" ]
+    }
+  ]
+}

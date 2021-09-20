@@ -1,0 +1,36 @@
+{
+  "data": {
+    "frontend": {
+      "build": {
+        "leaf": true,
+        "description": "frontend build description",
+        "executable": "echo echoing frontend build executable"
+      },
+      "run": {
+        "leaf": true,
+        "description": "frontend run description",
+        "executable": "frontend run executable"
+      },
+      "routes": {
+        "leaf": true,
+        "description": "frontend routes description"
+      }
+    },
+    "backend": {
+      "build": {
+        "leaf": true,
+        "description": "backend build description",
+        "executable": "backend build executable"
+      },
+      "run": {
+        "leaf": true,
+        "description": "backend run description",
+        "executable": "backend run executable"
+      },
+      "routes": {
+        "leaf": true,
+        "description": "backend routes description"
+      }
+    }
+  }
+}
