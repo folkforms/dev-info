@@ -1,7 +1,10 @@
 const tree = require("./tree");
+const aliases = require("./aliases");
 
 const dev = (data, treeSearch, handler, options) => {
   const treeSearchOriginal = treeSearch.join(" ");
+
+  treeSearch = aliases(data.aliases, treeSearch);
 
   // Get the target node
   const node = tree.find(data, treeSearch);

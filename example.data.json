@@ -1,4 +1,8 @@
 {
+  "aliases": {
+    "frontend": [ "fe", "front-end" ],
+    "backend": [ "be", "back-end" ]
+  },
   "data": {
     "frontend": {
       "build": {
