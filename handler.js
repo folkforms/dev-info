@@ -1,17 +1,19 @@
 const shelljs = require("shelljs");
 
 const handler = (node, options) => {
-  console.info("");
+  console.info(``);
 
   if(node.leaf) {
     if(options.task === "execute") {
       const r = shelljs.exec(node.executable);
       return r.code;
     } else if(options.task === "print") {
-      console.log(node.description);
+      console.info(node.description);
       if(node.executable) {
-        console.log("");
-        console.log(`Executable: ${node.executable}`);
+        console.info(``);
+        console.info(`Executable: ${node.executable}`);
+        console.info(``);
+        console.info(`(Note: You can run the executable directly by adding '-x' to the previous command.)`);
       }
     }
   } else {
@@ -19,7 +21,7 @@ const handler = (node, options) => {
     children.forEach(child => console.info(child));
   }
 
-  console.info("");
+  console.info(``);
   return 0;
 };
 
