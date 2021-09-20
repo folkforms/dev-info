@@ -12,8 +12,7 @@
       },
       "run": {
         "leaf": true,
-        "description": "frontend run description",
-        "executable": "frontend run executable"
+        "file": "./examplefile-frontend-run.md"
       },
       "routes": {
         "leaf": true,

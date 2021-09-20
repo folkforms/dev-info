@@ -1,17 +1,24 @@
+const fileConverter = require("./fileConverter");
 const shelljs = require("shelljs");
 
 const handler = (node, options) => {
   console.info(``);
 
   if(node.leaf) {
+    let props;
+    if(node.file) {
+      props = fileConverter(node.file);
+    } else {
+      props = { ...node };
+    }
     if(options.task === "execute") {
-      const r = shelljs.exec(node.executable);
+      const r = shelljs.exec(props.executable);
       return r.code;
     } else if(options.task === "print") {
-      console.info(node.description);
-      if(node.executable) {
+      console.info(props.description);
+      if(props.executable) {
         console.info(``);
-        console.info(`Executable: ${node.executable}`);
+        console.info(`Executable: ${props.executable}`);
         console.info(``);
         console.info(`(Note: You can run the executable directly by adding '-x' to the previous command.)`);
       }
