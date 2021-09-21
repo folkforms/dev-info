@@ -18,6 +18,7 @@ const fixTilde = path => {
 program
   .option('-x, --execute', 'execute commands')
   .option('-p, --print', 'print descriptions (default)')
+  .option('-l, --list', 'print tree even if target node contains a description')
   .option('-c, --config <path>', 'override config path')
   .parse(process.argv);
 
@@ -26,12 +27,9 @@ const config = fileio.readJson(fixTilde(program.opts().config || "~/.dev.config.
 
 // Combine command-line args and configuration
 let task = config.defaultTask;
-if(program.opts().execute) {
-  task = "execute";
-}
-if(program.opts().print) {
-  task = "print";
-}
+if(program.opts().execute) { task = "execute"; }
+if(program.opts().print) { task = "print"; }
+if(program.opts().list) { task = "list"; }
 const options = {
   task,
 };

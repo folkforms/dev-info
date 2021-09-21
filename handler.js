@@ -4,7 +4,7 @@ const shelljs = require("shelljs");
 const handler = (node, options) => {
   console.info(``);
 
-  if(isLeaf(node)) {
+  if(isLeaf(node) && options.task !== "list") {
     let props;
     if(node.file) {
       props = fileConverter(node.file);
