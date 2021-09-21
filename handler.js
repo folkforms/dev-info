@@ -12,13 +12,13 @@ const handler = (node, options) => {
       props = { ...node };
     }
     if(options.task === "execute") {
-      const r = shelljs.exec(props.executable);
+      const r = shelljs.exec(props._executable);
       return r.code;
     } else if(options.task === "print") {
-      console.info(props.description);
-      if(props.executable) {
+      console.info(props._description);
+      if(props._executable) {
         console.info(``);
-        console.info(`Executable: ${props.executable}`);
+        console.info(`Executable: ${props._executable}`);
       }
     }
   } else {
@@ -30,7 +30,7 @@ const handler = (node, options) => {
 };
 
 const isLeaf = node => {
-  return node && node.leaf;
+  return node && node._description;
 }
 
 const traverse = (obj, indent, increment) => {

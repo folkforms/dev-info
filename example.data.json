@@ -6,42 +6,34 @@
   "data": {
     "frontend": {
       "build": {
-        "leaf": true,
-        "description": "frontend build description",
-        "executable": "echo echoing frontend build executable"
+        "_description": "frontend build description",
+        "_executable": "echo echoing frontend build executable"
       },
       "run": {
-        "leaf": true,
-        "file": "./examplefile-frontend-run.md"
+        "_file": "./examplefile-frontend-run.md"
       },
       "routes": {
-        "leaf": true,
-        "description": "frontend routes description"
+        "_description": "frontend routes description"
       }
     },
     "backend": {
       "build": {
-        "leaf": true,
-        "description": "backend build description",
-        "executable": "backend build executable",
+        "_description": "backend build description",
+        "_executable": "backend build executable",
         "more-build": {
-          "leaf": true,
-          "description": "more-build description",
-          "executable": "more-build executable"
+          "_description": "more-build description",
+          "_executable": "more-build executable"
         }
       },
       "run": {
-        "leaf": true,
-        "description": "backend run description",
-        "executable": "backend run executable"
+        "_description": "backend run description",
+        "_executable": "backend run executable"
       },
       "routes": {
-        "leaf": true,
-        "description": "backend routes description",
+        "_description": "backend routes description",
         "more-routes": {
-          "leaf": true,
-          "description": "more-routes description",
-          "executable": "more-routes executable"
+          "_description": "more-routes description",
+          "_executable": "more-routes executable"
         }
       }
     }
