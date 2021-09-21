@@ -4,7 +4,7 @@ const shelljs = require("shelljs");
 const handler = (node, options) => {
   console.info(``);
 
-  if(node.leaf) {
+  if(isLeaf(node)) {
     let props;
     if(node.file) {
       props = fileConverter(node.file);
@@ -22,12 +22,35 @@ const handler = (node, options) => {
       }
     }
   } else {
-    const children = Object.keys(node);
-    children.forEach(child => console.info(child));
+    traverse(node, 0, 4);
   }
 
   console.info(``);
   return 0;
 };
+
+const isLeaf = node => {
+  return node && node.leaf;
+}
+
+const traverse = (obj, indent, increment) => {
+  for (let k in obj) {
+    if (typeof obj[k] === "object") {
+      console.log(`${getSpaces(indent)}${k}`);
+      traverse(obj[k], indent + increment, increment)
+    } else {
+      // Stop recursing
+    }
+  }
+}
+
+const getSpaces = indent => {
+  let x = "";
+  for(let i = 0; i < indent; i++) {
+    x += " ";
+  }
+  return x;
+}
+
 
 module.exports = handler;

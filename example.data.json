@@ -23,7 +23,12 @@
       "build": {
         "leaf": true,
         "description": "backend build description",
-        "executable": "backend build executable"
+        "executable": "backend build executable",
+        "more-build": {
+          "leaf": true,
+          "description": "more-build description",
+          "executable": "more-build executable"
+        }
       },
       "run": {
         "leaf": true,
@@ -32,7 +37,12 @@
       },
       "routes": {
         "leaf": true,
-        "description": "backend routes description"
+        "description": "backend routes description",
+        "more-routes": {
+          "leaf": true,
+          "description": "more-routes description",
+          "executable": "more-routes executable"
+        }
       }
     }
   }
