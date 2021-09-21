@@ -2,6 +2,7 @@ const tree = require("./tree");
 const aliases = require("./aliases");
 
 const dev = (data, treeSearch, handler, options) => {
+  const lastKey = treeSearch[treeSearch.length - 1];
   const treeSearchOriginal = treeSearch.join(" ");
 
   treeSearch = aliases(data.aliases, treeSearch);
@@ -15,7 +16,7 @@ const dev = (data, treeSearch, handler, options) => {
   }
 
   // Run the command
-  const code = handler(node, options);
+  const code = handler(node, lastKey, options);
   return { code };
 }
 

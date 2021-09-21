@@ -1,7 +1,7 @@
 const fileConverter = require("./fileConverter");
 const shelljs = require("shelljs");
 
-const handler = (node, options) => {
+const handler = (node, nodeKey, options) => {
   console.info(``);
 
   if(isLeaf(node) && options.task !== "list") {
@@ -12,8 +12,14 @@ const handler = (node, options) => {
       props = { ...node };
     }
     if(options.task === "execute") {
-      const r = shelljs.exec(props._executable);
-      return r.code;
+      if(props._executable) {
+        const r = shelljs.exec(props._executable);
+        return r.code;
+      } else {
+        console.info(`Error: Node '${nodeKey}' does not contain an executable`);
+        console.info(``);
+        return 1;
+      }
     } else if(options.task === "print") {
       console.info(props._description);
       if(props._executable) {
