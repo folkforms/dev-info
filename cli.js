@@ -16,9 +16,9 @@ const fixTilde = path => {
 
 // Parse command-line args
 program
-  .option('-x, --execute', 'FIXME Execute commands')
-  .option('-p, --print', 'FIXME Print descriptions')
-  .option('-c, --config <path>', 'Override config path')
+  .option('-x, --execute', 'execute commands')
+  .option('-p, --print', 'print descriptions (default)')
+  .option('-c, --config <path>', 'override config path')
   .parse(process.argv);
 
 // Load config file

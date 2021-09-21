@@ -19,8 +19,6 @@ const handler = (node, options) => {
       if(props.executable) {
         console.info(``);
         console.info(`Executable: ${props.executable}`);
-        console.info(``);
-        console.info(`(Note: You can run the executable directly by adding '-x' to the previous command.)`);
       }
     }
   } else {
