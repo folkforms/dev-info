@@ -19,6 +19,7 @@ program
   .option('-x, --execute', 'execute commands')
   .option('-p, --print', 'print descriptions (default)')
   .option('-l, --list', 'print tree even if target node contains a description')
+  .option('-s, --search <search>', 'search descriptions for the given text')
   .option('-c, --config <path>', 'override config path')
   .parse(process.argv);
 
@@ -27,11 +28,14 @@ const config = fileio.readJson(fixTilde(program.opts().config || "~/.dev.config.
 
 // Combine command-line args and configuration
 let task = config.defaultTask;
+let taskData;
 if(program.opts().execute) { task = "execute"; }
 if(program.opts().print) { task = "print"; }
 if(program.opts().list) { task = "list"; }
+if(program.opts().search) { task = "search"; taskData = program.opts().search; }
 const options = {
   task,
+  taskData,
 };
 
 // Load data from the data source (likely ~/.dev.data.json specified in config)
