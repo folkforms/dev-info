@@ -15,6 +15,7 @@ const search = (data, searchTerm) => {
     found.forEach(item => console.info(`${item.path}:\n\n${item.description}\n\n----\n`));
     return { code: 0 };
   } else {
+    console.error(`Error: Search text '${searchTerm}' not found.`);
     return { code: 1 };
   }
 }
