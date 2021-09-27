@@ -42,7 +42,7 @@ const isLeaf = node => {
 const traverse = (obj, indent, increment) => {
   for (let k in obj) {
     if (typeof obj[k] === "object") {
-      console.log(`${getSpaces(indent)}${k}`);
+      console.info(`${getSpaces(indent)}${k}`);
       traverse(obj[k], indent + increment, increment)
     } else {
       // Stop recursing
