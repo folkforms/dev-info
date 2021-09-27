@@ -1,5 +1,3 @@
-const fuzzy = require("./fuzzy");
-
 const find = (data, treeSearch) => {
 
   let node = data;

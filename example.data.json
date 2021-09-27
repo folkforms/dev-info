@@ -36,6 +36,25 @@
           "_executable": "more-routes executable"
         }
       }
+    },
+    "a": {
+      "b": {
+        "c": {
+          "foo": {
+            "_description": "foo (version 1)"
+          },
+          "bar": {
+            "_description": "bar (version 1)"
+          }
+        }
+      }
+    },
+    "d": {
+      "e": {
+        "foo": {
+          "_description": "foo (version 2)"
+        }
+      }
     }
   }
 }

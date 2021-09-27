@@ -1,10 +1,15 @@
 const tree = require("./tree");
 const aliases = require("./aliases");
 const search = require("./search");
+const fuzzy = require("./fuzzy");
 
 const dev = (data, treeSearch, handler, options) => {
   const lastKey = treeSearch[treeSearch.length - 1];
+  // Make a copy of treeSearch for error messages
   const treeSearchOriginal = treeSearch.join(" ");
+  // Make a copy of treeSearch for fuzzy searching
+  const treeSearchOriginalForFuzzy = [];
+  treeSearch.forEach(item => treeSearchOriginalForFuzzy.push(item));
 
   treeSearch = aliases(data.aliases, treeSearch);
 
@@ -14,11 +19,23 @@ const dev = (data, treeSearch, handler, options) => {
   }
 
   // Get the target node
-  const node = tree.find(data["data"], treeSearch);
+  let node = tree.find(data["data"], treeSearch);
   if(!node) {
-    console.error(`Error: Could not find ${JSON.stringify(treeSearchOriginal)}`);
-    // FIXME Print list as deep as we could find
-    return { code: 1 };
+    const fuzzyMatch = fuzzy(data["data"], treeSearchOriginalForFuzzy);
+    if(fuzzyMatch.length === 1) {
+      node = tree.find(data["data"], fuzzyMatch[0]);
+    } else {
+      if(fuzzyMatch.length > 1) {
+        console.error(`Error: No exact match found, but found multiple fuzzy matches:`);
+        console.error(``);
+        fuzzyMatch.forEach(item => console.error(`    ${item.join(" ")}`));
+        console.error(``);
+        return { code: 1 };
+      } else {
+        console.error(`Error: Could not find ${JSON.stringify(treeSearchOriginal)}`);
+        return { code: 1 };
+      }
+    }
   }
 
   // Run the command
