@@ -14,7 +14,7 @@ const dev = (data, treeSearch, handler, options) => {
   }
 
   // Get the target node
-  const node = tree.find(data, treeSearch);
+  const node = tree.find(data["data"], treeSearch);
   if(!node) {
     console.error(`Error: Could not find ${JSON.stringify(treeSearchOriginal)}`);
     // FIXME Print list as deep as we could find
