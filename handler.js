@@ -1,4 +1,5 @@
 const fileConverter = require("./fileConverter");
+const executableParams = require("./executableParams");
 const shelljs = require("shelljs");
 
 const handler = (node, nodeKey, options, data) => {
@@ -13,7 +14,8 @@ const handler = (node, nodeKey, options, data) => {
     }
     if(options.task === "execute") {
       if(props._executable) {
-        const r = shelljs.exec(props._executable);
+        const executable = executableParams(props._executable);
+        const r = shelljs.exec(executable);
         return r.code;
       } else {
         console.info(`Error: Node '${nodeKey}' does not contain an executable`);

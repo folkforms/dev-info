@@ -7,8 +7,8 @@
   "data": {
     "frontend": {
       "build": {
-        "_description": "frontend build description",
-        "_executable": "echo echoing frontend build executable"
+        "_description": "frontend build description ${hubspot.deploy/projectName.yaml} (param not replaced)",
+        "_executable": "echo echoing frontend build executable '${hubspot.deploy/projectName.yaml}'"
       },
       "run": {
         "_file": "./examplefile-frontend-run.md"
