@@ -5,6 +5,7 @@ const program = new Command();
 const fileio = require("@folkforms/file-io");
 const untildify = require('untildify');
 const handler = require("./handler");
+const validateAliases = require("./validateAliases");
 const dev = require("./dev");
 
 const fixTilde = path => {
@@ -43,6 +44,9 @@ const data = fileio.readJson(fixTilde(config.dataSource || "~/.dev.data.json"));
 
 // Define search arguments (e.g. "frontend build")
 const treeSearch = program.args;
+
+// Validate aliases
+validateAliases(data);
 
 // Call main method
 return dev(data, treeSearch, handler, options).code;

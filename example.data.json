@@ -1,7 +1,8 @@
 {
   "aliases": {
     "frontend": [ "fe", "front-end" ],
-    "backend": [ "be", "back-end" ]
+    "backend": [ "be", "back-end" ],
+    "bob": [ "steve" ]
   },
   "data": {
     "frontend": {
