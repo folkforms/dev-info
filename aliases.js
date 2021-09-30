@@ -1,5 +1,3 @@
-const tree = require("./tree");
-
 const aliases = (aliasList, treeSearch) => {
   if(!aliasList) {
     return treeSearch;
