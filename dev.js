@@ -3,15 +3,20 @@ const aliases = require("./aliases");
 const search = require("./search");
 const fuzzy = require("./fuzzy");
 
+const copyArray = arr => {
+  const copy = [];
+  arr.forEach(item => copy.push(item));
+  return copy;
+}
+
 const dev = (data, treeSearch, handler, options) => {
   const lastKey = treeSearch[treeSearch.length - 1];
   // Make a copy of treeSearch for error messages
-  const treeSearchOriginal = treeSearch.join(" ");
-  // Make a copy of treeSearch for fuzzy searching
-  const treeSearchOriginalForFuzzy = [];
-  treeSearch.forEach(item => treeSearchOriginalForFuzzy.push(item));
+  const treeSearchOriginal = copyArray(treeSearch);
 
   treeSearch = aliases(data.aliases, treeSearch);
+  // Make a copy of aliased treeSearch for fuzzy searching
+  const treeSearchOriginalForFuzzy = copyArray(treeSearch);
 
   if(options.task === "search") {
     const code = search(data, options.taskData);
