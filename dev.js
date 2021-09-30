@@ -44,7 +44,7 @@ const dev = (data, treeSearch, handler, options) => {
   }
 
   // Run the command
-  const code = handler(node, lastKey, options);
+  const code = handler(node, lastKey, options, data["data"]);
   return { code };
 }
 

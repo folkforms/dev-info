@@ -1,7 +1,7 @@
 const fileConverter = require("./fileConverter");
 const shelljs = require("shelljs");
 
-const handler = (node, nodeKey, options) => {
+const handler = (node, nodeKey, options, data) => {
   console.info(``);
 
   if(isLeaf(node) && options.task !== "list") {
@@ -21,10 +21,22 @@ const handler = (node, nodeKey, options) => {
         return 1;
       }
     } else if(options.task === "print") {
-      console.info(props._description);
-      if(props._executable) {
+      let printNode;
+      if(props._duplicate) {
+        printNode = data;
+        const arr = props._duplicate.split(" ");
+        while(arr.length > 0) {
+          const shift = arr.shift();
+          printNode = printNode[shift];
+        }
+      } else {
+        printNode = props;
+      }
+
+      console.info(printNode._description);
+      if(printNode._executable) {
         console.info(``);
-        console.info(`Executable: ${props._executable}`);
+        console.info(`Executable: ${printNode._executable}`);
       }
     }
   } else {
@@ -36,7 +48,7 @@ const handler = (node, nodeKey, options) => {
 };
 
 const isLeaf = node => {
-  return node && node._description;
+  return node && node._description || node._duplicate;
 }
 
 const traverse = (obj, indent, increment) => {

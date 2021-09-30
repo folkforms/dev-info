@@ -15,6 +15,9 @@
       },
       "routes": {
         "_description": "frontend routes description"
+      },
+      "deploy": {
+        "_description": "Front-end deploy"
       }
     },
     "backend": {
@@ -36,6 +39,9 @@
           "_description": "more-routes description",
           "_executable": "more-routes executable"
         }
+      },
+      "deploy": {
+        "_duplicate": "frontend deploy"
       }
     },
     "a": {
