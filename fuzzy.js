@@ -1,5 +1,4 @@
 const RecursiveIterator = require("recursive-iterator");
-const tree = require("./tree");
 
 const fuzzy = (data, treeSearch) => {
   let found = [];
