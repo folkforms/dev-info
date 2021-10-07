@@ -13,6 +13,9 @@
       "run": {
         "_file": "./examplefile-frontend-run.md"
       },
+      "run2": {
+        "_file": "./examplefile.txt"
+      },
       "routes": {
         "_description": "frontend routes description"
       },

@@ -1,0 +1,4 @@
+{
+  "dataSource": "./example3.data.json",
+  "defaultTask": "print"
+}

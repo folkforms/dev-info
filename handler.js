@@ -7,8 +7,8 @@ const handler = (node, nodeKey, options, data) => {
 
   if(isLeaf(node) && options.task !== "list") {
     let props;
-    if(node.file) {
-      props = fileConverter(node.file);
+    if(node._file) {
+      props = fileConverter(node._file);
     } else {
       props = { ...node };
     }
@@ -50,7 +50,7 @@ const handler = (node, nodeKey, options, data) => {
 };
 
 const isLeaf = node => {
-  return node && node._description || node._duplicate;
+  return node && node._description || node._duplicate || node._file;
 }
 
 const traverse = (obj, indent, increment) => {
