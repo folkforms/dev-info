@@ -3,17 +3,10 @@
 const { Command } = require('commander');
 const program = new Command();
 const fileio = require("@folkforms/file-io");
-const untildify = require('untildify');
+const fixTilde = require("./fixTilde");
 const handler = require("./handler");
 const validateAliases = require("./validateAliases");
 const dev = require("./dev");
-
-const fixTilde = path => {
-  if(path.startsWith("~")) {
-    path = untildify(path);
-  }
-  return path;
-}
 
 // Parse command-line args
 program
