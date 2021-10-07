@@ -1,7 +1,6 @@
-const fileio = require("@folkforms/file-io");
+const params = require("./params/params");
 
 const executableParams = cmd => {
-
   let indices = [];
   indices = hasParam(cmd)
   while(indices) {
@@ -30,31 +29,12 @@ const replaceParam = (cmd, paramStart, paramEnd) => {
 
 const getParamValue = (param, cmd) => {
   param = param.substring(2, param.length - 1);
-  const func = funcs[param];
+  const func = params[param];
   if(!func) {
     console.warn(`Warning: Unknown param '${param}' in executable '${cmd}'`);
     return param;
   } else {
     return func();
-  }
-}
-
-const funcs = {
-  "hubspot.deploy/projectName.yaml": () => {
-    let file1 = fileio.glob("hubspot.deploy/*.yaml");
-    let file2 = fileio.glob("hubspot.deploy/All*.yaml");
-    const found = file1.length === 1 || file2.length === 1;
-    if(!found) {
-      throw new Error("Could not find hubspot.deploy/*.yaml file");
-    }
-    let file = file1.length === 1 ? file1[0] : file2[0];
-    file = file.substring(15); // Remove "hubspot.deploy/"
-    if(file.endsWith("All.yaml")) {
-      file = file.substring(0, file.length - 8);
-    } else {
-      file = file.substring(0, file.length - 5);
-    }
-    return file;
   }
 }
 
