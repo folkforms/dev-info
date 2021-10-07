@@ -7,6 +7,7 @@ const fixTilde = require("./fixTilde");
 const handler = require("./handler");
 const validateAliases = require("./validateAliases");
 const dev = require("./dev");
+const params = require("./params/params");
 
 // Parse command-line args
 program
@@ -15,10 +16,20 @@ program
   .option('-l, --list', 'print tree even if target node contains a description')
   .option('-s, --search <search>', 'search descriptions for the given text')
   .option('-c, --config <path>', 'override config path')
+  .option('--list-params', 'List all params')
   .parse(process.argv);
 
 // Load config file
 const config = fileio.readJson(fixTilde(program.opts().config || "~/.dev.config.json"));
+
+if(program.opts().listParams) {
+  console.info(``);
+  console.info(`Params:`);
+  console.info(``);
+  Object.keys(params).forEach(key => console.info(`    ${key}\t${params[key].description}`));
+  console.info(``);
+  return 0;
+}
 
 // Combine command-line args and configuration
 let task = config.defaultTask;

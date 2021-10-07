@@ -29,12 +29,12 @@ const replaceParam = (cmd, paramStart, paramEnd) => {
 
 const getParamValue = (param, cmd) => {
   param = param.substring(2, param.length - 1);
-  const func = params[param];
-  if(!func) {
+  const exec = params[param].exec;
+  if(!exec) {
     console.warn(`Warning: Unknown param '${param}' in executable '${cmd}'`);
     return param;
   } else {
-    return func();
+    return exec();
   }
 }
 
