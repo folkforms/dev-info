@@ -32,7 +32,8 @@ const getParamValue = (param, cmd) => {
   param = param.substring(2, param.length - 1);
   const func = funcs[param];
   if(!func) {
-    throw new Error(`Unknown param '${param}' in executable '${cmd}'`);
+    console.warn(`Warning: Unknown param '${param}' in executable '${cmd}'`);
+    return param;
   } else {
     return func();
   }

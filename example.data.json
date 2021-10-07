@@ -65,6 +65,10 @@
           "_description": "foo (version 2)"
         }
       }
+    },
+    "testexec": {
+      "_description": "Test executable and params",
+      "_executable": "echo ${foo}"
     }
   }
 }
