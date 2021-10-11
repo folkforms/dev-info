@@ -1,6 +1,6 @@
 const fileio = require("@folkforms/file-io");
 
-const appNameYaml = {
+const appName = {
   description: "Gets the application name from the hubspot.deploy/*.yaml filename",
   exec: () => {
     let file = getFilenameForParsing();
@@ -37,4 +37,4 @@ const getFilenameForParsing = () => {
   }
 }
 
-module.exports = appNameYaml;
+module.exports = appName;

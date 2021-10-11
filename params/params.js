@@ -1,7 +1,7 @@
-const appNameYaml = require("./appNameYaml");
+const appName = require("./appName");
 
 const params = {
-  "appName": appNameYaml
+  "appName": appName
 }
 
 module.exports = params;
