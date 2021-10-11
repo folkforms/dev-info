@@ -1,7 +1,7 @@
-const hubspotDeployProjectNameYaml = require("./hubspotDeployProjectNameYaml");
+const appNameYaml = require("./appNameYaml");
 
 const params = {
-  "hubspot.deploy/projectName.yaml": hubspotDeployProjectNameYaml
+  "appName": appNameYaml
 }
 
 module.exports = params;
