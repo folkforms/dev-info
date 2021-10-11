@@ -1,0 +1,7 @@
+staticRoutes:
+- destination: something something
+  route: correct-route
+
+zkGroup: correct-zk-group
+
+appRoot: correct-app-route

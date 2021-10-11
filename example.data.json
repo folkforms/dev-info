@@ -64,7 +64,7 @@
     },
     "testparams": {
       "_description": "frontend build description ${appName} (param not replaced)",
-      "_executable": "echo echoing frontend build executable '${appName}'"
+      "_executable": "echo echoing frontend build executable appName=${appName}, staticRoute=${staticRoute}, zkGroup=${zkGroup}, appRoot=${appRoot}"
     },
     "testexec": {
       "_description": "Test executable and params",

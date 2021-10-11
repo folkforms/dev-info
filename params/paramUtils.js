@@ -1,4 +1,6 @@
 const fileio = require("@folkforms/file-io");
+const fs = require("fs-extra");
+const yaml = require("js-yaml");
 
 const getFilenameForParsing = () => {
   let file1 = fileio.glob("hubspot.deploy/*.yaml");
@@ -23,4 +25,10 @@ const getFilenameForParsing = () => {
   }
 }
 
-module.exports = { getFilenameForParsing };
+const getYaml = filename => {
+  const yamlFile = fs.readFileSync(filename, "utf8");
+  const yamlData = yaml.load(yamlFile);
+  return yamlData;
+}
+
+module.exports = { getFilenameForParsing, getYaml };
