@@ -63,8 +63,8 @@
       }
     },
     "testparams": {
-      "_description": "frontend build description ${hubspot.deploy/projectName.yaml} (param not replaced)",
-      "_executable": "echo echoing frontend build executable '${hubspot.deploy/projectName.yaml}'"
+      "_description": "frontend build description ${appName} (param not replaced)",
+      "_executable": "echo echoing frontend build executable '${appName}'"
     },
     "testexec": {
       "_description": "Test executable and params",
