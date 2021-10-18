@@ -9,7 +9,7 @@ const copyArray = arr => {
   return copy;
 }
 
-const dev = (data, treeSearch, handler, options) => {
+const devInfo = (data, treeSearch, handler, options) => {
   const lastKey = treeSearch[treeSearch.length - 1];
   // Make a copy of treeSearch for error messages
   const treeSearchOriginal = copyArray(treeSearch);
@@ -48,4 +48,4 @@ const dev = (data, treeSearch, handler, options) => {
   return { code };
 }
 
-module.exports = dev;
+module.exports = devInfo;

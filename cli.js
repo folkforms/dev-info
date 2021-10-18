@@ -6,7 +6,7 @@ const fileio = require("@folkforms/file-io");
 const fixTilde = require("./fixTilde");
 const handler = require("./handler");
 const validateAliases = require("./validateAliases");
-const dev = require("./dev");
+const devInfo = require("./devInfo");
 const params = require("./params/params");
 
 // Parse command-line args
@@ -53,4 +53,4 @@ const treeSearch = program.args;
 validateAliases(data);
 
 // Call main method
-return dev(data, treeSearch, handler, options).code;
+return devInfo(data, treeSearch, handler, options).code;
