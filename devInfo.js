@@ -9,7 +9,7 @@ const copyArray = arr => {
   return copy;
 }
 
-const devInfo = (data, treeSearch, handler, options) => {
+const devInfo = (data, treeSearch, handler, shell, options) => {
   const lastKey = treeSearch[treeSearch.length - 1];
   // Make a copy of treeSearch for error messages
   const treeSearchOriginal = copyArray(treeSearch);
@@ -19,7 +19,7 @@ const devInfo = (data, treeSearch, handler, options) => {
   const treeSearchOriginalForFuzzy = copyArray(treeSearch);
 
   if(options.task === "search") {
-    const code = search(data, options.taskData);
+    const code = search(data, options.taskData, shell);
     return { code };
   }
 
@@ -31,20 +31,20 @@ const devInfo = (data, treeSearch, handler, options) => {
       node = tree.find(data["data"], fuzzyMatch[0]);
     } else {
       if(fuzzyMatch.length > 1) {
-        console.error(`Error: No exact match found, but found multiple fuzzy matches:`);
-        console.error(``);
-        fuzzyMatch.forEach(item => console.error(`    ${item.join(" ")}`));
-        console.error(``);
+        shell.echo(`Error: No exact match found, but found multiple fuzzy matches:`);
+        shell.echo(``);
+        fuzzyMatch.forEach(item => shell.echo(`    ${item.join(" ")}`));
+        shell.echo(``);
         return { code: 1 };
       } else {
-        console.error(`Error: Could not find ${JSON.stringify(treeSearchOriginal)}`);
+        shell.echo(`Error: Could not find ${JSON.stringify(treeSearchOriginal)}`);
         return { code: 1 };
       }
     }
   }
 
   // Run the command
-  const code = handler(node, lastKey, options, data["data"]);
+  const code = handler(node, lastKey, shell, options, data["data"]);
   return { code };
 }
 

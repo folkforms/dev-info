@@ -8,6 +8,7 @@ const handler = require("./handler");
 const validateAliases = require("./validateAliases");
 const devInfo = require("./devInfo");
 const params = require("./params/params");
+const shelljs = require("shelljs");
 
 // Parse command-line args
 program
@@ -50,7 +51,7 @@ const data = fileio.readJson(fixTilde(config.dataSource || "~/.dev.data.json"));
 const treeSearch = program.args;
 
 // Validate aliases
-validateAliases(data);
+validateAliases(data, shelljs);
 
 // Call main method
-return devInfo(data, treeSearch, handler, options).code;
+return devInfo(data, treeSearch, handler, shelljs, options).code;

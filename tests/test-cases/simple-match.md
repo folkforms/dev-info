@@ -1,25 +1,25 @@
-# {title}
+# Test case 1
 
 ## Description
 
-{description}
+It finds a simple match
 
 ## Input args
 
-{inputArgs}
+    frontend deploy
 
 ## Internal options
 
-{internalOptions}
+    {
+      "task": "print"
+    }
 
 ## Expected commands
 
-{expectedCommands}
-
 ## Expected echos
 
-{expectedEchos}
+    Front-end deploy
 
 ## Expected error code
 
-{expectedErrorCode}
+    0

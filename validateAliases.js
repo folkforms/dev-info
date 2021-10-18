@@ -1,6 +1,6 @@
 const RecursiveIterator = require("recursive-iterator");
 
-const validateAliases = input => {
+const validateAliases = (input, shell) => {
   const aliases = Object.keys(input.aliases);
   const data = input.data;
 
@@ -12,7 +12,7 @@ const validateAliases = input => {
       }
     }
     if(!found) {
-      console.warn(`Warning: Alias '${alias}' is listed but there are no nodes with that name`);
+      shell.echo(`Warning: Alias '${alias}' is listed but there are no nodes with that name`);
     }
   });
 }

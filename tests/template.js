@@ -1,7 +1,7 @@
-const fs = require("fs-extra");
-const yaml = require("js-yaml");
+const devInfo = require("../../devInfo");
+const fileio = require("@folkforms/file-io");
+const handler = require("../../handler");
 const { dummyShellJs } = require("dummy-shells");
-const hs = require("../../hs");
 
 beforeEach(() => {
   dummyShellJs._clear();
@@ -9,9 +9,10 @@ beforeEach(() => {
 
 test('{{ description | first | esq }} (file: {{ @filename }})', () => {
 
-  const yamlFile = fs.readFileSync("hs-commands.yaml", "utf8");
-  const yamlData = yaml.load(yamlFile);
-  const inputArgs = "{{ inputArgs | trimarray }}".split(" ");
+  // Arrange
+  const data = fileio.readJson("example.data.json");
+  const treeSearch = "{{ inputArgs | trimarray }}".split(" ");
+  const options = JSON.parse("{{ internalOptions | join | edq }}");
   const expectedCommands = [
     {{ expectedCommands | trimarray | doublequote | join(",\n") | indent(4) }}
   ];
@@ -20,15 +21,20 @@ test('{{ description | first | esq }} (file: {{ @filename }})', () => {
   ];
   const expectedErrorCode = {{ expectedErrorCode | trimarray | usedefault(0) }};
 
-  const retVal = hs(yamlData, inputArgs); // dummyShellJs, props, inputArgs
+  // Act
+  const r = devInfo(data, treeSearch, handler, dummyShellJs, options);
 
-  expect(retVal.code).toEqual(expectedErrorCode);
+  // Assert
+  expect(r.code).toEqual(expectedErrorCode);
+
+  const echoList = dummyShellJs.echoList.filter(item => item.length > 0);
+  expectedEchos.forEach(cmd => {
+    expect(echoList).toContain(cmd);
+  });
+  expect(echoList.length).toEqual(expectedEchos.length);
+
   expectedCommands.forEach(cmd => {
     expect(dummyShellJs.execList).toContain(cmd);
   });
   expect(dummyShellJs.execList.length).toEqual(expectedCommands.length);
-  expectedEchos.forEach(cmd => {
-    expect(dummyShellJs.echoList).toContain(cmd);
-  });
-  expect(dummyShellJs.echoList.length).toEqual(expectedEchos.length);
 });

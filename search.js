@@ -1,6 +1,6 @@
 const RecursiveIterator = require("recursive-iterator");
 
-const search = (data, searchTerm) => {
+const search = (data, searchTerm, shell) => {
 
   const found = [];
   for(let { node, path } of new RecursiveIterator(data)) {
@@ -11,11 +11,11 @@ const search = (data, searchTerm) => {
     }
   }
   if(found.length > 0) {
-    console.info(``);
-    found.forEach(item => console.info(`${item.path}:\n\n${item.description}\n\n----\n`));
+    shell.echo(``);
+    found.forEach(item => shell.echo(`${item.path}:\n\n${item.description}\n\n----\n`));
     return { code: 0 };
   } else {
-    console.error(`Error: Search text '${searchTerm}' not found.`);
+    shell.echo(`Error: Search text '${searchTerm}' not found.`);
     return { code: 1 };
   }
 }

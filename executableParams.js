@@ -1,6 +1,9 @@
 const params = require("./params/params");
 
-const executableParams = cmd => {
+let shell;
+
+const executableParams = (cmd, shellObj) => {
+  shell = shellObj;
   let indices = [];
   indices = hasParam(cmd)
   while(indices) {
@@ -30,7 +33,7 @@ const replaceParam = (cmd, paramStart, paramEnd) => {
 const getParamValue = (param, cmd) => {
   param = param.substring(2, param.length - 1);
   if(!params[param] || !params[param].exec) {
-    console.warn(`Warning: Unknown param '${param}' in executable '${cmd}'`);
+    shell.echo(`Warning: Unknown param '${param}' in executable '${cmd}'`);
     return param;
   } else {
     const exec = params[param].exec;

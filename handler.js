@@ -1,9 +1,8 @@
 const fileConverter = require("./fileConverter");
 const executableParams = require("./executableParams");
-const shelljs = require("shelljs");
 
-const handler = (node, nodeKey, options, data) => {
-  console.info(``);
+const handler = (node, nodeKey, shell, options, data) => {
+  shell.echo(``);
 
   if(isLeaf(node) && options.task !== "list") {
     let props;
@@ -15,11 +14,11 @@ const handler = (node, nodeKey, options, data) => {
     if(options.task === "execute") {
       if(props._executable) {
         const executable = executableParams(props._executable);
-        const r = shelljs.exec(executable);
+        const r = shell.exec(executable);
         return r.code;
       } else {
-        console.info(`Error: Node '${nodeKey}' does not contain an executable`);
-        console.info(``);
+        shell.echo(`Error: Node '${nodeKey}' does not contain an executable`);
+        shell.echo(``);
         return 1;
       }
     } else if(options.task === "print") {
@@ -35,17 +34,17 @@ const handler = (node, nodeKey, options, data) => {
         printNode = props;
       }
 
-      console.info(printNode._description);
+      shell.echo(printNode._description);
       if(printNode._executable) {
-        console.info(``);
-        console.info(`Executable: ${printNode._executable}`);
+        shell.echo(``);
+        shell.echo(`Executable: ${printNode._executable}`);
       }
     }
   } else {
-    traverse(node, 0, 4);
+    traverse(node, 0, 4, shell);
   }
 
-  console.info(``);
+  shell.echo(``);
   return 0;
 };
 
@@ -53,11 +52,11 @@ const isLeaf = node => {
   return node && node._description || node._duplicate || node._file;
 }
 
-const traverse = (obj, indent, increment) => {
+const traverse = (obj, indent, increment, shell) => {
   for (let k in obj) {
     if (typeof obj[k] === "object") {
-      console.info(`${getSpaces(indent)}${k}`);
-      traverse(obj[k], indent + increment, increment)
+      shell.echo(`${getSpaces(indent)}${k}`);
+      traverse(obj[k], indent + increment, increment, shell)
     } else {
       // Stop recursing
     }
