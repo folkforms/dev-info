@@ -18,6 +18,7 @@ program
   .option('-s, --search <search>', 'search descriptions for the given text')
   .option('-c, --config <path>', 'override config path')
   .option('--list-params', 'List all params')
+  .addHelpText('after', "\nSee https://github.com/folkforms/dev-info for examples\n")
   .parse(process.argv);
 
 // Load config file

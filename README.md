@@ -16,6 +16,9 @@ Used to provide help text or index all the things you need to remember in a new 
       "tests": {
         "_description": "Description of the frontend tests.",
         "_executable: "yarn test"
+      },
+      "deploy": {
+        "_duplicate": "misc deploy"
       }
     },
     "backend": {
@@ -30,6 +33,14 @@ Used to provide help text or index all the things you need to remember in a new 
       "tests": {
         "_description": "Description of the backend tests.",
         "_executable: "mvn clean verify"
+      },
+      "deploy": {
+        "_duplicate": "misc deploy"
+      }
+    },
+    "misc": {
+      "deploy": {
+        "_description": "How to deploy stuff"
       }
     }
   }
@@ -57,3 +68,10 @@ Executable: yarn start
 ```
 
 5. Use the `-x` argument to execute a command. For example, `dev frontend run -x` will execute whatever is in the `_executable` field, in this case `yarn start`.
+
+## Data options
+
+- `_description`: Text that describes the given topic
+- `_executable`: An executable command that will be run when the `-x` option is specified
+- `_duplicate`: Link this entry to another entry
+- `_file`: Use the given file's contents as the description
