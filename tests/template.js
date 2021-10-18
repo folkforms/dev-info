@@ -10,7 +10,14 @@ beforeEach(() => {
 test('{{ description | first | esq }} (file: {{ @filename }})', () => {
 
   // Arrange
-  const data = fileio.readJson("example.data.json");
+  let data;
+  const inputData = "{{ inputData | join | edq }}".trim();
+  if(inputData.startsWith("file:")) {
+    const file = inputData.substring(5).trim();
+    data = fileio.readJson(file);
+  } else {
+    data = JSON.parse(inputData);
+  }
   const treeSearch = "{{ inputArgs | trimarray }}".split(" ");
   const options = JSON.parse("{{ internalOptions | join | edq }}");
   const expectedCommands = [

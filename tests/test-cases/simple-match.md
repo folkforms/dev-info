@@ -6,7 +6,22 @@ It finds a simple match
 
 ## Input args
 
-    frontend deploy
+    foo bar
+
+## Input data
+
+     {
+      "data": {
+        "foo": {
+          "bar": {
+            "_description": "Bar description"
+          },
+          "muk": {
+            "_description": "Muk description"
+          }
+        }
+      }
+    }
 
 ## Internal options
 
@@ -16,7 +31,7 @@ It finds a simple match
 
 ## Expected echos
 
-    Front-end deploy
+    Bar description
 
 ## Expected commands
 

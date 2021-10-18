@@ -8,6 +8,10 @@
 
 {inputArgs}
 
+## Input data
+
+{inputData}
+
 ## Internal options
 
 {internalOptions}
