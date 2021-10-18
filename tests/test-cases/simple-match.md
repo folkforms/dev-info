@@ -14,11 +14,11 @@ It finds a simple match
       "task": "print"
     }
 
-## Expected commands
-
 ## Expected echos
 
     Front-end deploy
+
+## Expected commands
 
 ## Expected error code
 

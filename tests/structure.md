@@ -12,13 +12,13 @@
 
 {internalOptions}
 
-## Expected commands
-
-{expectedCommands}
-
 ## Expected echos
 
 {expectedEchos}
+
+## Expected commands
+
+{expectedCommands}
 
 ## Expected error code
 
