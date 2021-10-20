@@ -13,6 +13,7 @@ const shelljs = require("shelljs");
 // Parse command-line args
 program
   .option('-x, --execute', 'execute commands')
+  .option('-n, --dry-run', 'show the command that would be run, without actually running anything. Implies -x.')
   .option('-p, --print', 'print descriptions (default)')
   .option('-l, --list', 'print tree even if target node contains a description')
   .option('-s, --search <search>', 'search descriptions for the given text')
@@ -37,12 +38,14 @@ if(program.opts().listParams) {
 let task = config.defaultTask;
 let taskData;
 if(program.opts().execute) { task = "execute"; }
+if(program.opts().dryRun) { task = "execute"; }
 if(program.opts().print) { task = "print"; }
 if(program.opts().list) { task = "list"; }
 if(program.opts().search) { task = "search"; taskData = program.opts().search; }
 const options = {
   task,
   taskData,
+  dryRun: !!program.opts().dryRun
 };
 
 // Load data from the data source (likely ~/.dev.data.json specified in config)

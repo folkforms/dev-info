@@ -14,8 +14,13 @@ const handler = (node, nodeKey, shell, options, data) => {
     if(options.task === "execute") {
       if(props._executable) {
         const executable = executableParams(props._executable, shell);
-        const r = shell.exec(executable);
-        return r.code;
+        if(!options.dryRun) {
+          const r = shell.exec(executable);
+          return r.code;
+        } else {
+          shell.echo(executable);
+          return 0;
+        }
       } else {
         shell.echo(`Error: Node '${nodeKey}' does not contain an executable`);
         shell.echo(``);
