@@ -1,8 +1,8 @@
-# Test case 4
+# Test case 9
 
 ## Description
 
-It will execute an executable and substitute a param
+It prints the executable and substitutes the param if available
 
 ## Input args
 
@@ -10,7 +10,7 @@ It will execute an executable and substitute a param
 
 ## Input data
 
-    {
+     {
       "data": {
         "foo": {
           "bar": {
@@ -27,14 +27,15 @@ It will execute an executable and substitute a param
 ## Internal options
 
     {
-      "task": "execute"
+      "task": "print"
     }
 
 ## Expected echos
 
-## Expected commands
+    Bar description
+    Executable: Bar executable param=correct-app-root
 
-    Bar executable param=correct-app-root
+## Expected commands
 
 ## Expected error code
 

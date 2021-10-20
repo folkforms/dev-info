@@ -4,4 +4,4 @@ staticRoutes:
 
 zkGroup: correct-zk-group
 
-appRoot: correct-app-route
+appRoot: correct-app-root

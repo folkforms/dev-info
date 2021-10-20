@@ -13,7 +13,7 @@ const handler = (node, nodeKey, shell, options, data) => {
     }
     if(options.task === "execute") {
       if(props._executable) {
-        const executable = executableParams(props._executable);
+        const executable = executableParams(props._executable, shell);
         const r = shell.exec(executable);
         return r.code;
       } else {
@@ -37,7 +37,7 @@ const handler = (node, nodeKey, shell, options, data) => {
       shell.echo(printNode._description);
       if(printNode._executable) {
         shell.echo(``);
-        shell.echo(`Executable: ${printNode._executable}`);
+        shell.echo(`Executable: ${executableParams(props._executable, shell, false)}`);
       }
     }
   } else {
