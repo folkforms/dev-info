@@ -1,4 +1,4 @@
-# Test case 10
+# Test case 'print executable missing param'
 
 ## Description
 

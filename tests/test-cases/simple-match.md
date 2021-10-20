@@ -1,4 +1,4 @@
-# Test case 1
+# Test case 'simple match'
 
 ## Description
 

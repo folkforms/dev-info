@@ -1,4 +1,4 @@
-# Test case 6
+# Test case 'duplicate'
 
 ## Description
 

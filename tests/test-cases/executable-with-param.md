@@ -1,4 +1,4 @@
-# Test case 4
+# Test case 'executable with param'
 
 ## Description
 

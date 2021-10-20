@@ -1,4 +1,4 @@
-# Test case 5
+# Test case 'fuzzy match'
 
 ## Description
 
