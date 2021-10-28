@@ -1,5 +1,5 @@
 staticRoutes:
-- destination: something something
+- destination: correct-destination
   route: correct-route
 
 zkGroup: correct-zk-group
