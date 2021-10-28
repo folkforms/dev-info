@@ -4,6 +4,9 @@ const staticRoute = {
   description: "Gets the zkGroup value from the hubspot.deploy/*.yaml filename",
   exec: () => {
     const file = paramUtils.getFilenameForParsing();
+    if(!file) {
+      return "zkGroup";
+    }
     const yaml = paramUtils.getYaml(file);
     if(!yaml.zkGroup) {
       return "zkGroup";

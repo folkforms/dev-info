@@ -14,11 +14,12 @@ const getFilenameForParsing = () => {
   } else if(file1.length > 0) {
     r = file1[0];
   } else {
-    const errorMessage = `Error getting hubspot.deploy/*.yaml file `
-      + `(file1=${JSON.stringify(file1)}, `
-      + `file2=${JSON.stringify(file2)}, `
-      + `file3=${JSON.stringify(file3)})`;
-    throw new Error(errorMessage);
+    // FIXME if debug mode:
+    // const errorMessage = `Error getting hubspot.deploy/*.yaml file `
+    //   + `(file1=${JSON.stringify(file1)}, `
+    //   + `file2=${JSON.stringify(file2)}, `
+    //   + `file3=${JSON.stringify(file3)})`;
+    // console.debug(errorMessage);
   }
   return r;
 }
