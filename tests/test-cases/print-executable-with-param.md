@@ -15,7 +15,7 @@ It prints the executable and substitutes the param if available
         "foo": {
           "bar": {
             "_description": "Bar description",
-            "_executable": "Bar executable param=${appRoot}"
+            "_executable": "Bar executable param=${appRoot} param=${staticRoute}"
           },
           "muk": {
             "_description": "Muk description"
@@ -33,7 +33,7 @@ It prints the executable and substitutes the param if available
 ## Expected echos
 
     Bar description
-    Executable: Bar executable param=correct-app-root
+    Executable: Bar executable param=correct-app-root param=correct-static-route
 
 ## Expected commands
 

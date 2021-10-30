@@ -11,7 +11,8 @@ const staticRoute = {
     if(!yaml.staticRoutes || yaml.staticRoutes.length === 0 || !yaml.staticRoutes[0].route) {
       return "staticRoute";
     } else {
-      return yaml.staticRoutes[0].route;
+      const s = yaml.staticRoutes[0].route;
+      return s.startsWith("/") ? s.substring(1) : s;
     }
   }
 }
