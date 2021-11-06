@@ -8,10 +8,12 @@ const staticRoute = {
       return "staticRoute";
     }
     const yaml = paramUtils.getYaml(file);
-    if(!yaml.staticRoutes || yaml.staticRoutes.length === 0 || !yaml.staticRoutes[0].route) {
+    const target = yaml["staticRoutes"] || yaml["staticRoutesV2"];
+
+    if(!target || target.length === 0 || !target[0].route) {
       return "staticRoute";
     } else {
-      const s = yaml.staticRoutes[0].route;
+      const s = target[0].route;
       return s.startsWith("/") ? s.substring(1) : s;
     }
   }
