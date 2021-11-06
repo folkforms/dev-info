@@ -29,7 +29,7 @@ if(program.opts().listParams) {
   console.info(``);
   console.info(`Params:`);
   console.info(``);
-  Object.keys(params).forEach(key => console.info(`    ${key}\t${params[key].description}`));
+  Object.keys(params).forEach(key => console.info(`    ${key}\t ${params[key].description}`));
   console.info(``);
   return 0;
 }
