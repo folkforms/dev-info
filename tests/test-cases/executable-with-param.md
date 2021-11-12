@@ -15,7 +15,7 @@ It will execute an executable and substitute a param
         "foo": {
           "bar": {
             "_description": "Bar description",
-            "_executable": "Bar executable param=${appRoot}"
+            "_executable": "open https://local.hubspotqa.com/${staticRoute}"
           },
           "muk": {
             "_description": "Muk description"
@@ -34,7 +34,7 @@ It will execute an executable and substitute a param
 
 ## Expected commands
 
-    Bar executable param=correct-app-root
+    open https://local.hubspotqa.com/correct-static-route
 
 ## Expected error code
 
