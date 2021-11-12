@@ -19,8 +19,7 @@ const devInfo = (data, treeSearch, handler, shell, options) => {
   const treeSearchOriginalForFuzzy = copyArray(treeSearch);
 
   if(options.task === "search") {
-    const code = search(data, options.taskData, shell);
-    return { code };
+    return search(data, options.taskData, shell);
   }
 
   // Get the target node
