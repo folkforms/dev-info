@@ -17,13 +17,13 @@ program
   .option('-p, --print', 'print descriptions (default)')
   .option('-l, --list', 'print tree even if target node contains a description')
   .option('-s, --search <search>', 'search descriptions for the given text')
-  .option('-c, --config <path>', 'override config path')
+  .option('-d, --data <path>', 'override data path')
   .option('--list-params', 'List all params')
   .addHelpText('after', "\nSee https://github.com/folkforms/dev-info for examples\n")
   .parse(process.argv);
 
 // Load config file
-const config = fileio.readJson(fixTilde(program.opts().config || "~/.dev.config.json"));
+const data = fileio.readJson(fixTilde(program.opts().data || "~/.dev.data.json"));
 
 if(program.opts().listParams) {
   console.info(``);
@@ -35,7 +35,7 @@ if(program.opts().listParams) {
 }
 
 // Combine command-line args and configuration
-let task = config.defaultTask;
+let task = data.config?.defaultTask || "print";
 let taskData;
 if(program.opts().execute) { task = "execute"; }
 if(program.opts().dryRun) { task = "execute"; }
@@ -47,9 +47,6 @@ const options = {
   taskData,
   dryRun: !!program.opts().dryRun
 };
-
-// Load data from the data source (likely ~/.dev.data.json specified in config)
-const data = fileio.readJson(fixTilde(config.dataSource || "~/.dev.data.json"));
 
 // Define search arguments (e.g. "frontend build")
 const treeSearch = program.args;

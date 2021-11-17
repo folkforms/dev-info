@@ -1,4 +1,7 @@
 {
+  "config": {
+    "defaultTask": "print"
+  },
   "data": {
     "start": {
       "_description": "Run 'hsenv qa' to log in to the QA env."
@@ -85,4 +88,3 @@
     }
   }
 }
-

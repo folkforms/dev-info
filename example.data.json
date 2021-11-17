@@ -1,4 +1,7 @@
 {
+  "config": {
+    "defaultTask": "print"
+  },
   "aliases": {
     "frontend": [ "fe", "front-end" ],
     "backend": [ "be", "back-end" ],
