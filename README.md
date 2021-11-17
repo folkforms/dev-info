@@ -3,18 +3,18 @@
 Used to provide help text or index all the things you need to remember in a new job. You have a single JSON file containing all the info, as opposed to having dozens of text files everywhere.
 
 1. Install `dev-info` globally: `yarn add --global dev-info`
-2. Create `~/.dev.data.json`
+2. Create `~/.dev-info.json`
 
 ```
 {
   "data": {
     "frontend": {
       "run": {
-        "_description": "The frontend uses yarn.",
+        "_description": "The frontend uses yarn. Use 'yarn start' to run it.",
         "_executable: "yarn start"
       },
       "tests": {
-        "_description": "Description of the frontend tests.",
+        "_description": "Description of the frontend tests. Use 'yarn test' to run the tests.",
         "_executable: "yarn test"
       },
       "deploy": {

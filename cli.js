@@ -23,7 +23,7 @@ program
   .parse(process.argv);
 
 // Load config file
-const data = fileio.readJson(fixTilde(program.opts().data || "~/.dev.data.json"));
+const data = fileio.readJson(fixTilde(program.opts().data || "~/.dev-info.json"));
 
 if(program.opts().listParams) {
   console.info(``);
