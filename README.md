@@ -75,3 +75,9 @@ Executable: yarn start
 - `_executable`: An executable command that will be run when the `-x` option is specified
 - `_duplicate`: Link this entry to another entry
 - `_file`: Use the given file's contents as the description
+
+## Parameters
+
+Most of the parameters are based on the HubSpot project yaml configuration name e.g. "hubspot.deploy/my-project.yaml".
+
+- `${domain}`: Will be replaced with the value of `config.projectDomainMap["my-project"]` or a default value

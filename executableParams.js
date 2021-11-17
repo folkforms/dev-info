@@ -2,9 +2,11 @@ const params = require("./params/params");
 
 let shell;
 let printWarning;
+let projectDomainMap;
 
-const executableParams = (cmd, shellObj, warn = true) => {
+const executableParams = (cmd, shellObj, projectDomainMapObj, warn = true) => {
   shell = shellObj;
+  projectDomainMap = projectDomainMapObj;
   printWarning = warn;
   let indices = [];
   indices = hasParam(cmd);
@@ -47,7 +49,7 @@ const getParamValue = (param, cmd) => {
     return param;
   } else {
     const exec = params[param].exec;
-    return exec();
+    return exec(projectDomainMap);
   }
 }
 
