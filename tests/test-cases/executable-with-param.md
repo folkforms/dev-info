@@ -34,7 +34,7 @@ It will execute an executable and substitute a param
 
 ## Expected commands
 
-    open https://local.hubspotqa.com/correct-static-route
+    open https://local.hubspotqa.com/correct-static-route/:id
 
 ## Expected error code
 

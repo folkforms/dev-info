@@ -1,6 +1,6 @@
 staticRoutes:
 - destination: correct-destination
-  route: /correct-static-route
+  route: /correct-static-route/{id}
 
 zkGroup: correct-zk-group
 

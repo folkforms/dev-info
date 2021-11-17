@@ -33,7 +33,7 @@ It prints the executable and substitutes the param if available
 ## Expected echos
 
     Bar description
-    Executable: Bar executable param=correct-app-root param=correct-static-route
+    Executable: Bar executable param=correct-app-root param=correct-static-route/:id
 
 ## Expected commands
 

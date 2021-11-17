@@ -7,10 +7,16 @@ const executableParams = (cmd, shellObj, warn = true) => {
   shell = shellObj;
   printWarning = warn;
   let indices = [];
-  indices = hasParam(cmd)
+  indices = hasParam(cmd);
   while(indices) {
     cmd = replaceParam(cmd, indices[0], indices[1]);
     indices = hasParam(cmd);
+  }
+  // A 'local param' is a param within the substituted param, e.g. ${staticRoute} -> /foo/{id}
+  indices = hasLocalParam(cmd);
+  while(indices) {
+    cmd = replaceLocalParam(cmd, indices[0], indices[1]);
+    indices = hasLocalParam(cmd);
   }
   return cmd;
 }
@@ -43,6 +49,23 @@ const getParamValue = (param, cmd) => {
     const exec = params[param].exec;
     return exec();
   }
+}
+
+const hasLocalParam = cmd => {
+  const start = cmd.indexOf("{");
+  const end = cmd.indexOf("}");
+  if(start !== -1 && end !== -1) {
+    return [start, end];
+  }
+  return null;
+}
+
+const replaceLocalParam = (cmd, paramStart, paramEnd) => {
+  const firstPart = cmd.substring(0, paramStart);
+  const paramPart = cmd.substring(paramStart + 1, paramEnd);
+  const replacement = `:${paramPart}`;
+  const lastPart = cmd.substring(paramEnd + 1);
+  return firstPart + replacement + lastPart;
 }
 
 module.exports = executableParams;
