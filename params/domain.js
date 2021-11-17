@@ -13,7 +13,7 @@ const server = {
     } else {
       file = file.substring(0, file.length - 5);
     }
-    return projectDomainMap[file] || file;
+    return projectDomainMap[file] || "local.hubteamqa.com";
   }
 }
 

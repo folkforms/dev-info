@@ -14,12 +14,6 @@ const executableParams = (cmd, shellObj, projectDomainMapObj, warn = true) => {
     cmd = replaceParam(cmd, indices[0], indices[1]);
     indices = hasParam(cmd);
   }
-  // A 'local param' is a param within the substituted param, e.g. ${staticRoute} -> /foo/{id}
-  indices = hasLocalParam(cmd);
-  while(indices) {
-    cmd = replaceLocalParam(cmd, indices[0], indices[1]);
-    indices = hasLocalParam(cmd);
-  }
   return cmd;
 }
 
@@ -27,6 +21,9 @@ const hasParam = cmd => {
   const start = cmd.indexOf("${");
   const end = cmd.indexOf("}");
   if(start !== -1 && end !== -1) {
+    if(end < start) {
+      throw new Error(`Error: end (${end}) < start (${start}) for cmd '${cmd}'`);
+    }
     return [start, end];
   }
   return null;
@@ -35,7 +32,15 @@ const hasParam = cmd => {
 const replaceParam = (cmd, paramStart, paramEnd) => {
   const firstPart = cmd.substring(0, paramStart);
   const paramPart = cmd.substring(paramStart, paramEnd + 1);
-  const replacement = getParamValue(paramPart, cmd);
+  let replacement = getParamValue(paramPart, cmd);
+
+  // A 'local param' is a param within the substituted param, e.g. ${staticRoute} -> /foo/{id}
+  indices = hasLocalParam(replacement);
+  while(indices) {
+    replacement = replaceLocalParam(replacement, indices[0], indices[1]);
+    indices = hasLocalParam(replacement);
+  }
+
   const lastPart = cmd.substring(paramEnd + 1);
   return firstPart + replacement + lastPart;
 }

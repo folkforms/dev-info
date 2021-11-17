@@ -2,6 +2,9 @@
   "config": {
     "defaultTask": "print"
   },
+  "projectDomainMap": {
+    "correct-app-name": "correct-app-domain"
+  },
   "aliases": {
     "frontend": [ "fe", "front-end" ],
     "backend": [ "be", "back-end" ],
@@ -67,7 +70,7 @@
     },
     "testparams": {
       "_description": "frontend build description ${appName} (param not replaced)",
-      "_executable": "echo echoing frontend build executable appName=${appName}, staticRoute=${staticRoute}, zkGroup=${zkGroup}, appRoot=${appRoot}"
+      "_executable": "echo echoing frontend build executable domain=${domain} appName=${appName}, staticRoute=${staticRoute}, zkGroup=${zkGroup}, appRoot=${appRoot}"
     },
     "testexec": {
       "_description": "Test executable and params",
