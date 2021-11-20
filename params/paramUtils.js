@@ -30,4 +30,18 @@ const getYaml = filename => {
   return yamlData;
 }
 
-module.exports = { getFilenameForParsing, getYaml };
+const getAppName = () => {
+  let file = getFilenameForParsing();
+  if(!file) {
+    return null;
+  }
+  file = file.substring(15); // Remove "hubspot.deploy/"
+  if (file.endsWith("All.yaml") || file.endsWith("Api.yaml")) {
+    file = file.substring(0, file.length - 8);
+  } else {
+    file = file.substring(0, file.length - 5);
+  }
+  return file;
+}
+
+module.exports = { getFilenameForParsing, getYaml, getAppName };
