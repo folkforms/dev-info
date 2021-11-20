@@ -43,7 +43,7 @@ const devInfo = (data, treeSearch, handler, shell, options) => {
   }
 
   // Run the command
-  const code = handler(node, lastKey, shell, options, data["data"], data["projectDomainMap"]);
+  const code = handler(node, lastKey, shell, options, data["data"], data["projectDomainMap"], data["projectParamMap"]);
   return { code };
 }
 
