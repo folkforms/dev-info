@@ -12,7 +12,11 @@ It maps the 'domain' param correctly based on the projectDomainMap value in .dev
 
     {
       "projectDomainMap": {
-         "correct-app-name": "correct-app-domain"
+         "correct-app-domain": [
+           "foo-app",
+           "correct-app-name",
+           "bar-app"
+         ]
       },
       "data": {
         "foo": {

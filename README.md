@@ -78,6 +78,14 @@ Executable: yarn start
 
 ## Parameters
 
-Most of the parameters are based on the HubSpot project yaml configuration name e.g. "hubspot.deploy/my-project.yaml".
+Most of the parameters are based on values taken from the HubSpot project yaml configuration name i.e. "hubspot.deploy/my-project.yaml".
 
-- `${domain}`: Will be replaced with the value of `config.projectDomainMap["my-project"]` or a default value
+You can override parameters using `projectParamsMap.param` if it's not getting the correct value.
+
+The `${domain}` param will be mapped to a value from `projectDomainsMap`. For example:
+```
+    "projectDomainsMap": {
+      "foo-domain": [ "foo-project-a", "foo-project-b" ],
+      "bar-domain": [ "bar-project-a", "bar-project-b" ]
+    }
+```

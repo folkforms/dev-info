@@ -13,7 +13,15 @@ const server = {
     } else {
       file = file.substring(0, file.length - 5);
     }
-    return projectDomainMap[file] || "local.hubteamqa.com";
+
+    let result;
+    Object.keys(projectDomainMap).forEach(key => {
+      const values = projectDomainMap[key];
+      if(values.indexOf(file) !== -1) {
+        result = key;
+      }
+    });
+    return result || "local.hubteamqa.com";
   }
 }
 
