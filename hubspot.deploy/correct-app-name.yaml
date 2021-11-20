@@ -1,5 +1,7 @@
 staticRoutes:
 - destination: correct-destination
+  route: /bad-route
+- destination: html/index.html
   route: /correct-static-route/{id}
 
 zkGroup: correct-zk-group

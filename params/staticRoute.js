@@ -5,16 +5,21 @@ const staticRoute = {
   exec: () => {
     const file = paramUtils.getFilenameForParsing();
     if(!file) {
-      return "staticRoute";
+      return "staticRoute(1)";
     }
     const yaml = paramUtils.getYaml(file);
     const target = yaml["staticRoutes"] || yaml["staticRoutesV2"];
 
     if(!target || target.length === 0 || !target[0].route) {
-      return "staticRoute";
+      return "staticRoute(2)";
     } else {
-      const s = target[0].route;
-      return s.startsWith("/") ? s.substring(1) : s;
+      for(let i = 0; i < target.length; i++) {
+        if(target[i].destination === "html/index.html") {
+          const s = target[i].route;
+          return s.startsWith("/") ? s.substring(1) : s;
+        }
+      }
+      return "staticRoute(3)";
     }
   }
 }
