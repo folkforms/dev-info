@@ -1,6 +1,11 @@
 const fixTilde = require("./fixTilde");
 const fileio = require("@folkforms/file-io");
 
+/**
+ * Converts a markdown file into a node with `_description` and (optionally) `_executable` attributes.
+ *
+ * @param {string} file file path to load
+ */
 const fileConverter = file => {
   file = fixTilde(file);
   const lines = fileio.readLines(file);
