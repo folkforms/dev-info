@@ -1,4 +1,3 @@
-const fixTilde = require("./fixTilde");
 const fileio = require("@folkforms/file-io");
 
 /**
@@ -7,7 +6,6 @@ const fileio = require("@folkforms/file-io");
  * @param {string} file file path to load
  */
 const fileConverter = file => {
-  file = fixTilde(file);
   const lines = fileio.readLines(file);
 
   let data = {};

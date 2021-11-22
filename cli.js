@@ -3,7 +3,6 @@
 const { Command } = require('commander');
 const program = new Command();
 const fileio = require("@folkforms/file-io");
-const fixTilde = require("./fixTilde");
 const handler = require("./handler");
 const validateAliases = require("./validateAliases");
 const devInfo = require("./devInfo");
@@ -23,7 +22,7 @@ program
   .parse(process.argv);
 
 // Load config file
-const data = fileio.readJson(fixTilde(program.opts().data || "~/.dev-info.json"));
+const data = fileio.readJson(program.opts().data || "~/.dev-info.json");
 
 if(program.opts().listParams) {
   console.info(``);

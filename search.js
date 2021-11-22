@@ -1,6 +1,5 @@
 const RecursiveIterator = require("recursive-iterator");
 const fileio = require("@folkforms/file-io");
-const fixTilde = require("./fixTilde");
 
 const search = (data, searchTerm, shell) => {
   const found = [];
@@ -11,7 +10,7 @@ const search = (data, searchTerm, shell) => {
       found.push({ path: foundPath, description: node._description });
     }
     if(node._file) {
-      const contents = fileio.readLinesAsString(fixTilde(node._file));
+      const contents = fileio.readLinesAsString(node._file);
       if(contents.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
         let foundPath = path.join(" ");
         foundPath = foundPath.substring(foundPath.indexOf(" ") + 1);

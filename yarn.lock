@@ -302,7 +302,7 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@folkforms/file-io@^0.2.1", "@folkforms/file-io@^0.2.2", "@folkforms/file-io@^0.2.3", "@folkforms/file-io@^0.2.4":
+"@folkforms/file-io@^0.2.1", "@folkforms/file-io@^0.2.2", "@folkforms/file-io@^0.2.3":
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/@folkforms/file-io/-/file-io-0.2.4.tgz#305462e2a37b2045c711ca3ecba34733963bda75"
   integrity sha512-BKNdxIiGvT9zSFtkBkCfT6oOUCY3peRHV9kccoux0VqrfCt0QYdKccgf9QcER0QHKEr72esUxnPNmHqw7zuHXw==
@@ -310,6 +310,16 @@
     fast-glob "^3.2.5"
     fs-extra "^9.1.0"
     shelljs "^0.8.4"
+
+"@folkforms/file-io@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@folkforms/file-io/-/file-io-0.2.5.tgz#10b58220abb2e71dddba8a95ac97de52d136a6b3"
+  integrity sha512-1rklAMsGZRxAIHj2DuNNcK8alWk1MNDURrnLMdjjddUTucuzfivscRtCF11tIFE2+/kbPHMVVy3MGaPANqE7Kw==
+  dependencies:
+    fast-glob "^3.2.5"
+    fs-extra "^9.1.0"
+    shelljs "^0.8.4"
+    untildify "^4.0.0"
 
 "@folkforms/line-endings@^0.0.10":
   version "0.0.10"
