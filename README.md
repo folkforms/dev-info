@@ -82,9 +82,9 @@ Most of the parameters are based on values taken from the HubSpot project yaml c
 
 You can override parameters using `projectParamsMap.param` if it's not getting the correct value.
 
-The `${domain}` param will be mapped to a value from `projectDomainsMap`. For example:
+The `${domain}` param will be mapped to a value from `projectDomainMap`. For example:
 ```
-    "projectDomainsMap": {
+    "projectDomainMap": {
       "foo-domain": [ "foo-project-a", "foo-project-b" ],
       "bar-domain": [ "bar-project-a", "bar-project-b" ]
     }
