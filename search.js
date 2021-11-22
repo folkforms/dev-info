@@ -20,13 +20,17 @@ const search = (data, searchTerm, shell) => {
   }
   if(found.length > 0) {
     shell.echo(``);
-    found.forEach(item => {
+    for(let i = 0; i < found.length; i++) {
+      const item = found[i];
       if(!item.file) {
-        shell.echo(`${item.path}:\n\n${item.description}\n\n----\n`);
+        shell.echo(`${item.path}:\n\n${item.description}\n`);
+        if(i < found.length - 1) {
+          shell.echo("----\n");
+        }
       } else {
         shell.echo(`${item.path} (${item.file}):\n\n${item.description}\n\n----\n`);
       }
-    });
+    };
     return { code: 0 };
   } else {
     shell.echo(`Error: Search text '${searchTerm}' not found.`);
