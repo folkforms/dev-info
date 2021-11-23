@@ -8,7 +8,7 @@ const staticRoute = {
       return "staticRoute(1)";
     }
     const yaml = paramUtils.getYaml(file);
-    const target = yaml["staticRoutes"] || yaml["staticRoutesV2"];
+    const target = yaml["staticRoutes"];
 
     if(!target || target.length === 0 || !target[0].route) {
       return "staticRoute(2)";
