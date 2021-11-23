@@ -32,7 +32,7 @@ Search function finds the given text in a description.
 
 ## Expected echos
 
-    foo bar:\n\nBar description toast\n\n----
+    foo bar:\n\nBar description toast
 
 ## Expected commands
 
