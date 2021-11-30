@@ -74,7 +74,21 @@ Executable: yarn start
 - `_description`: Text that describes the given topic
 - `_executable`: An executable command that will be run when the `-x` option is specified
 - `_duplicate`: Link this entry to another entry
-- `_file`: Use the given file's contents as the description
+- `_file`: Use the given file's contents as the description (and optionally executable as well)
+
+### _file options
+
+Files loaded via the `_file` option can denote executables in the following two forms:
+
+```
+    ## Executable
+
+    foo
+```
+or
+```
+    Executable: foo
+```
 
 ## Parameters
 

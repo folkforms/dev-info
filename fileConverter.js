@@ -1,7 +1,7 @@
 const fileio = require("@folkforms/file-io");
 
 /**
- * Converts a markdown file into a node with `_description` and (optionally) `_executable` attributes.
+ * Converts a markdown file into a node with `_description` and (optionally) `executable` attributes.
  *
  * @param {string} file file path to load
  */
@@ -33,11 +33,18 @@ const convertFromMarkdown = lines => {
   for(let i = 0; i < lines.length; i++) {
     if(lines[i].startsWith("## Executable")) {
       data._executable = lines[i+2];
-      lines.splice(i - 1, lines.length - i + 1);
       data._description = lines;
       break;
     }
   }
+  for(let i = 0; i < lines.length; i++) {
+    if(lines[i].startsWith("Executable: ")) {
+      data._executable = lines[i].substring(12);
+      data._description = lines;
+      break;
+    }
+  }
+
   return data;
 }
 
