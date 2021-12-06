@@ -10,6 +10,11 @@ const copyArray = arr => {
 }
 
 const devInfo = (data, treeSearch, handler, shell, options) => {
+  const defaultOptions = {
+    "deployFolder": "hubspot.deploy"
+  };
+  options = { ...defaultOptions, ...options };
+
   const lastKey = treeSearch[treeSearch.length - 1];
   // Make a copy of treeSearch for error messages
   const treeSearchOriginal = copyArray(treeSearch);

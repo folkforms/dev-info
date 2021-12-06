@@ -2,8 +2,8 @@ const paramUtils = require("./paramUtils");
 
 const server = {
   description: "Gets the server name based on the app name and the projectDomainsMap value in .dev-info.json",
-  exec: (projectDomainMap = {}) => {
-    const appName = paramUtils.getAppName();
+  exec: (options, projectDomainMap = {}) => {
+    const appName = paramUtils.getAppName(options);
     if(!appName) {
       return "local.hubteamqa.com";
     }

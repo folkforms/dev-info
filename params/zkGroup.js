@@ -1,9 +1,9 @@
 const paramUtils = require("./paramUtils");
 
-const staticRoute = {
+const zkGroup = {
   description: "Gets the zkGroup value from the hubspot.deploy/*.yaml filename",
-  exec: () => {
-    const file = paramUtils.getFilenameForParsing();
+  exec: options => {
+    const file = paramUtils.getFilenameForParsing(options);
     if(!file) {
       return "zkGroup";
     }
@@ -16,4 +16,4 @@ const staticRoute = {
   }
 }
 
-module.exports = staticRoute;
+module.exports = zkGroup;

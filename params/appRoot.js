@@ -1,9 +1,9 @@
 const paramUtils = require("./paramUtils");
 
-const staticRoute = {
+const appRoot = {
   description: "Gets the appRoot value from the hubspot.deploy/*.yaml filename",
-  exec: () => {
-    const file = paramUtils.getFilenameForParsing();
+  exec: options => {
+    const file = paramUtils.getFilenameForParsing(options);
     if(!file) {
       return "appRoot";
     }
@@ -16,4 +16,4 @@ const staticRoute = {
   }
 }
 
-module.exports = staticRoute;
+module.exports = appRoot;

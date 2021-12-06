@@ -1,0 +1,12 @@
+staticRoutesV2:
+  domains:
+  - app.hubspot.com
+  routes:
+  - dest: html/index-bad.html
+    paths:
+    - /bad-path/{id}
+    forceTrailingSlash: 'true'
+  - dest: html/index.html
+    paths:
+    - /correct-static-route-v2/{id}
+    forceTrailingSlash: 'true'

@@ -4,12 +4,15 @@ let shell;
 let printWarning;
 let projectDomainMap;
 let projectParamMap;
+let options;
 
-const executableParams = (cmd, shellObj, projectDomainMapObj, projectParamMapObj = {}, warn = true) => {
+const executableParams = (cmd, shellObj, projectDomainMapObj, projectParamMapObj = {}, warn = true, optionsObj) => {
   shell = shellObj;
   projectDomainMap = projectDomainMapObj;
   projectParamMap = projectParamMapObj;
   printWarning = warn;
+  options = optionsObj;
+
   let indices = [];
   indices = hasParam(cmd);
   while(indices) {
@@ -59,7 +62,7 @@ const getParamValue = (param, cmd) => {
     if(projectParamMap[param]) {
       return projectParamMap[param];
     } else {
-      return exec(projectDomainMap);
+      return exec(options, projectDomainMap);
     }
   }
 }

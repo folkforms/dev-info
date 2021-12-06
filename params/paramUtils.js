@@ -2,10 +2,10 @@ const fileio = require("@folkforms/file-io");
 const fs = require("fs-extra");
 const yaml = require("js-yaml");
 
-const getFilenameForParsing = () => {
-  let file1 = fileio.glob("hubspot.deploy/*.yaml").sort((a, b) => a.length - b.length);
-  let file2 = fileio.glob("hubspot.deploy/*All.yaml");
-  let file3 = fileio.glob("hubspot.deploy/*Api.yaml");
+const getFilenameForParsing = options => {
+  let file1 = fileio.glob(`${options.deployFolder}/*.yaml`).sort((a, b) => a.length - b.length);
+  let file2 = fileio.glob(`${options.deployFolder}/*All.yaml`);
+  let file3 = fileio.glob(`${options.deployFolder}/*Api.yaml`);
   let r;
   if(file2.length === 1) {
     r = file2[0];
@@ -30,8 +30,8 @@ const getYaml = filename => {
   return yamlData;
 }
 
-const getAppName = () => {
-  let file = getFilenameForParsing();
+const getAppName = options => {
+  let file = getFilenameForParsing(options);
   if(!file) {
     return null;
   }

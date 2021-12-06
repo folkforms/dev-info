@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { Command } = require('commander');
+const { Command, Option } = require('commander');
 const program = new Command();
 const fileio = require("@folkforms/file-io");
 const handler = require("./handler");
@@ -21,7 +21,7 @@ program
   .addHelpText('after', "\nSee https://github.com/folkforms/dev-info for examples\n")
   .parse(process.argv);
 
-// Load config file
+// Load data file
 const data = fileio.readJson(program.opts().data || "~/.dev-info.json");
 
 if(program.opts().listParams) {
@@ -41,10 +41,11 @@ if(program.opts().dryRun) { task = "execute"; }
 if(program.opts().print) { task = "print"; }
 if(program.opts().list) { task = "list"; }
 if(program.opts().search) { task = "search"; taskData = program.opts().search; }
+
 const options = {
   task,
   taskData,
-  dryRun: !!program.opts().dryRun
+  dryRun: !!program.opts().dryRun,
 };
 
 // Define search arguments (e.g. "frontend build")
