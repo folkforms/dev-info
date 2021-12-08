@@ -1,7 +1,7 @@
 const paramUtils = require("./paramUtils");
 
 const appRoot = {
-  description: "Gets the appRoot value from the hubspot.deploy/*.yaml filename",
+  description: "Gets the appRoot value from the hubspot.deploy/*.yaml file",
   exec: options => {
     const file = paramUtils.getFilenameForParsing(options);
     if(!file) {

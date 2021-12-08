@@ -1,8 +1,8 @@
-# Test case 'project params map'
+# Test case 'project domains'
 
 ## Description
 
-User can override properties for a given project using the projectParamMap value in .dev-info.json
+It maps the 'domain' param correctly based on the projectDomains value in .dev-info.json
 
 ## Input args
 
@@ -11,14 +11,18 @@ User can override properties for a given project using the projectParamMap value
 ## Input data
 
     {
-      "projectParamMap": {
-         "staticRoute": "override-static-route"
+      "projectDomains": {
+         "correct-app-domain": [
+           "foo-app",
+           "correct-app-name",
+           "bar-app"
+         ]
       },
       "data": {
         "foo": {
           "bar": {
             "_description": "Bar description",
-            "_executable": "Bar executable param=${staticRoute}"
+            "_executable": "Bar executable param=${domain}"
           },
           "muk": {
             "_description": "Muk description"
@@ -36,7 +40,7 @@ User can override properties for a given project using the projectParamMap value
 ## Expected echos
 
     Bar description
-    Executable: Bar executable param=override-static-route
+    Executable: Bar executable param=correct-app-domain
 
 ## Expected commands
 

@@ -2,8 +2,13 @@
   "config": {
     "defaultTask": "print"
   },
-  "projectDomainMap": {
+  "projectDomains": {
     "correct-app-name": "correct-app-domain"
+  },
+  "paramOverrides": {
+    "correct-app-name": {
+      "foo": "overridden-foo"
+    }
   },
   "aliases": {
     "frontend": [ "fe", "front-end" ],

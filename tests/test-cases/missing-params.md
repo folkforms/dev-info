@@ -1,4 +1,4 @@
-# Test case 'test missing params'
+# Test case 'missing params'
 
 ## Description
 

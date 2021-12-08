@@ -11,7 +11,7 @@ It prints the executable and substitutes any params it finds
 ## Input data
 
     {
-      "projectDomainMap": {
+      "projectDomains": {
         "correct-domain": "correct-app-name"
       },
       "data": {

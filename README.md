@@ -43,6 +43,22 @@ Used to provide help text or index all the things you need to remember in a new 
         "_description": "How to deploy stuff"
       }
     }
+  },
+  "paramOverrides": {
+    "foo-project": {
+      "appRoot": "overridden-app-root",
+      "staticRoute": "overridden-static-root",
+      "zkGroup": "overridden-zk-group"
+    }
+  },
+  "projectDomains": {
+    "domain-one.com": [
+      "foo-project",
+      "bar-project"
+    ],
+    "domain-two.com": [
+      "muk-project"
+    ]
   }
 }
 ```
@@ -96,10 +112,20 @@ Most of the parameters are based on values taken from the HubSpot project yaml c
 
 You can override parameters using `projectParamsMap.param` if it's not getting the correct value.
 
-The `${domain}` param will be mapped to a value from `projectDomainMap`. For example:
+The `${domain}` param will be mapped to a value from `projectDomains`. For example:
 ```
-    "projectDomainMap": {
+    "projectDomains": {
       "foo-domain": [ "foo-project-a", "foo-project-b" ],
       "bar-domain": [ "bar-project-a", "bar-project-b" ]
     }
 ```
+
+## Overriding parameters
+
+  "paramOverrides": {
+    "foo-project": {
+      "appRoot": "overridden-app-root",
+      "staticRoute": "overridden-static-root",
+      "zkGroup": "overridden-zk-group"
+    }
+  },

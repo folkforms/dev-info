@@ -2,14 +2,14 @@ const params = require("./params/params");
 
 let shell;
 let printWarning;
-let projectDomainMap;
-let projectParamMap;
+let projectDomains;
+let paramOverrides;
 let options;
 
-const executableParams = (cmd, shellObj, projectDomainMapObj, projectParamMapObj = {}, warn = true, optionsObj) => {
+const executableParams = (cmd, shellObj, projectDomainsObj = {}, paramOverridesObj = {}, warn = true, optionsObj) => {
   shell = shellObj;
-  projectDomainMap = projectDomainMapObj;
-  projectParamMap = projectParamMapObj;
+  projectDomains = projectDomainsObj;
+  paramOverrides = paramOverridesObj;
   printWarning = warn;
   options = optionsObj;
 
@@ -58,12 +58,10 @@ const getParamValue = (param, cmd) => {
     }
     return param;
   } else {
+    const appName = params["appName"].exec(options);
     const exec = params[param].exec;
-    if(projectParamMap[param]) {
-      return projectParamMap[param];
-    } else {
-      return exec(options, projectDomainMap);
-    }
+    const override = paramOverrides && paramOverrides[appName] && paramOverrides[appName][param];
+    return override || exec(options, projectDomains);
   }
 }
 
