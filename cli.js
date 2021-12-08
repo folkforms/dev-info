@@ -18,6 +18,7 @@ program
   .option('-s, --search <search>', 'search descriptions for the given text')
   .option('-d, --data <path>', 'override data path')
   .option('--list-params', 'List all params')
+  .option('--app-name', 'Print app name')
   .addHelpText('after', "\nSee https://github.com/folkforms/dev-info for examples\n")
   .parse(process.argv);
 
@@ -29,6 +30,16 @@ if(program.opts().listParams) {
   console.info(`Params:`);
   console.info(``);
   Object.keys(params).forEach(key => console.info(`    ${key}\t ${params[key].description}`));
+  console.info(``);
+  return 0;
+}
+
+if(program.opts().appName) {
+  const appName = params["appName"].exec({ "deployFolder": "hubspot.deploy" });
+  console.info(``);
+  console.info(`App name:`);
+  console.info(``);
+  console.info(appName);
   console.info(``);
   return 0;
 }
