@@ -1,4 +1,4 @@
-# Test case 'print executable missing param'
+# Test case 'test missing params'
 
 ## Description
 
@@ -10,7 +10,7 @@ It prints the executable despite the param not being available
 
 ## Input data
 
-     {
+    {
       "data": {
         "foo": {
           "bar": {
