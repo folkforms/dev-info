@@ -66,4 +66,5 @@ const treeSearch = program.args;
 validateAliases(data, shelljs);
 
 // Call main method
-return devInfo(data, treeSearch, handler, shelljs, options).code;
+const code = devInfo(data, treeSearch, handler, shelljs, options).code;
+process.exit(code);
