@@ -11,6 +11,7 @@ const copyArray = arr => {
 
 const devInfo = (data, treeSearch, handler, shell, options) => {
   const defaultOptions = {
+    "subParams": true,
     "deployFolder": "hubspot.deploy"
   };
   options = { ...defaultOptions, ...options };

@@ -28,7 +28,7 @@ It will execute an executable and not substitute a param if --no-sub-params is o
 
     {
       "task": "execute",
-      "noSubParams": true,
+      "subParams": false,
       "deployFolder": "tests/data/hubspot.deploy"
     }
 
