@@ -20,7 +20,6 @@ program
   .option('-d, --data <path>', 'override data path')
   .option('--list-params', 'list all params')
   .option('--no-sub-params', 'skip parameter substitution')
-  .option('--app-name', 'print app name')
   .option('--debug', 'debug mode')
   .option('--deploy-folder <folder>', 'override deploy folder')
   .addHelpText('after', "\nSee https://github.com/folkforms/dev-info for examples\n")
@@ -28,25 +27,6 @@ program
 
 // Load data file
 const data = fileio.readJson(program.opts().data || "~/.dev-info.json");
-
-if(program.opts().listParams) {
-  console.info(``);
-  console.info(`Params:`);
-  console.info(``);
-  Object.keys(params).forEach(key => console.info(`    ${key}\t ${params[key].description}`));
-  console.info(``);
-  return 0;
-}
-
-if(program.opts().appName) {
-  const appName = params["appName"].exec({ "deployFolder": program.opts().deployFolder || "hubspot.deploy" });
-  console.info(``);
-  console.info(`App name:`);
-  console.info(``);
-  console.info(appName);
-  console.info(``);
-  return 0;
-}
 
 // Combine command-line args and configuration
 let task = data.config?.defaultTask || "print";
@@ -66,6 +46,20 @@ const options = {
   debug: program.opts().debug,
   deployFolder: program.opts().deployFolder,
 };
+
+if(program.opts().listParams) {
+  console.info(``);
+  console.info(`Params:`);
+  console.info(``);
+  Object.keys(params).forEach(key => {
+    const execValue = options.subParams
+      ? params[key].exec({ "deployFolder": program.opts().deployFolder || "hubspot.deploy" }) + "\t"
+      : "";
+    console.info(`    ${key}\t${execValue}${params[key].description}`);
+  });
+  console.info(``);
+  process.exit(0);
+}
 
 // Define search arguments (e.g. "frontend build")
 const treeSearch = program.args;
