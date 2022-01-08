@@ -34,7 +34,8 @@ It overrides the params with the given values
 ## Internal options
 
     {
-      "task": "print"
+      "task": "print",
+      "deployFolder": "tests/data/hubspot.deploy"
     }
 
 ## Expected echos

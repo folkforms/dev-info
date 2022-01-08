@@ -3,6 +3,9 @@ const fs = require("fs-extra");
 const yaml = require("js-yaml");
 
 const getFilenameForParsing = options => {
+  if(options.debug) {
+    console.debug(`DEBUG: options.deployFolder = '${options.deployFolder}'`);
+  }
   let file1 = fileio.glob(`${options.deployFolder}/*.yaml`).sort((a, b) => a.length - b.length);
   let file2 = fileio.glob(`${options.deployFolder}/*All.yaml`);
   let file3 = fileio.glob(`${options.deployFolder}/*Api.yaml`);
@@ -14,12 +17,13 @@ const getFilenameForParsing = options => {
   } else if(file1.length > 0) {
     r = file1[0];
   } else {
-    // FIXME if debug mode:
-    // const errorMessage = `Error getting hubspot.deploy/*.yaml file `
-    //   + `(file1=${JSON.stringify(file1)}, `
-    //   + `file2=${JSON.stringify(file2)}, `
-    //   + `file3=${JSON.stringify(file3)})`;
-    // console.debug(errorMessage);
+    if(options.debug) {
+      const errorMessage = `DEBUG: Error getting hubspot.deploy/*.yaml file `
+        + `(file1=${JSON.stringify(file1)}, `
+        + `file2=${JSON.stringify(file2)}, `
+        + `file3=${JSON.stringify(file3)})`;
+      console.debug(errorMessage);
+    }
   }
   return r;
 }
@@ -35,9 +39,11 @@ const getAppName = options => {
   if(!file) {
     return null;
   }
-  file = file.substring(15); // Remove "hubspot.deploy/"
+  file = file.substring(options.deployFolder.length + 1);
   if (file.endsWith("All.yaml") || file.endsWith("Api.yaml")) {
     file = file.substring(0, file.length - 8);
+  } else if (file.endsWith("Meta.yaml")) {
+    file = file.substring(0, file.length - 9);
   } else {
     file = file.substring(0, file.length - 5);
   }

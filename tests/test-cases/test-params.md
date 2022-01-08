@@ -30,7 +30,8 @@ It prints the executable and substitutes any params it finds
 ## Internal options
 
     {
-      "task": "print"
+      "task": "print",
+      "deployFolder": "tests/data/hubspot.deploy"
     }
 
 ## Expected echos

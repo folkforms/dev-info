@@ -27,7 +27,8 @@ Search function finds the given text in a description.
 
     {
       "task": "search",
-      "taskData": "toast"
+      "taskData": "toast",
+      "deployFolder": "tests/data/hubspot.deploy"
     }
 
 ## Expected echos

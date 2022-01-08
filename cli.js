@@ -17,8 +17,10 @@ program
   .option('-l, --list', 'print tree even if target node contains a description')
   .option('-s, --search <search>', 'search descriptions for the given text')
   .option('-d, --data <path>', 'override data path')
-  .option('--list-params', 'List all params')
-  .option('--app-name', 'Print app name')
+  .option('--list-params', 'list all params')
+  .option('--app-name', 'print app name')
+  .option('--debug', 'debug mode')
+  .option('--deploy-folder <folder>', 'override deploy folder')
   .addHelpText('after', "\nSee https://github.com/folkforms/dev-info for examples\n")
   .parse(process.argv);
 
@@ -56,7 +58,9 @@ if(program.opts().search) { task = "search"; taskData = program.opts().search; }
 const options = {
   task,
   taskData,
-  dryRun: !!program.opts().dryRun,
+  dryRun: program.opts().dryRun,
+  debug: program.opts().debug,
+  deployFolder: program.opts().deployFolder,
 };
 
 // Define search arguments (e.g. "frontend build")

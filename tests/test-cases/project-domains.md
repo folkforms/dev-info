@@ -34,7 +34,8 @@ It maps the 'domain' param correctly based on the projectDomains value in .dev-i
 ## Internal options
 
     {
-      "task": "print"
+      "task": "print",
+      "deployFolder": "tests/data/hubspot.deploy"
     }
 
 ## Expected echos

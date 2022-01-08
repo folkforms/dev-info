@@ -27,7 +27,8 @@ It prints the executable despite the param not being available
 ## Internal options
 
     {
-      "task": "print"
+      "task": "print",
+      "deployFolder": "tests/data/hubspot.deploy"
     }
 
 ## Expected echos

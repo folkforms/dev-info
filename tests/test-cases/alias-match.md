@@ -30,7 +30,8 @@ It finds an aliased match
 ## Internal options
 
     {
-      "task": "print"
+      "task": "print",
+      "deployFolder": "tests/data/hubspot.deploy"
     }
 
 ## Expected echos

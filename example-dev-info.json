@@ -80,6 +80,10 @@
     "testexec": {
       "_description": "Test executable and params",
       "_executable": "echo ${foo}"
+    },
+    "testDeployName": {
+      "_description": "Test deployName param",
+      "_executable": "echo deploy name = ${deployName}"
     }
   }
 }

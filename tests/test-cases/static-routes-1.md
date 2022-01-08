@@ -27,7 +27,8 @@ It gets the staticRoutes param from the yaml file
 ## Internal options
 
     {
-      "task": "print"
+      "task": "print",
+      "deployFolder": "tests/data/hubspot.deploy"
     }
 
 ## Expected echos

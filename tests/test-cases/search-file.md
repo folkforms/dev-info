@@ -27,7 +27,8 @@ Search function finds the given text in a file.
 
     {
       "task": "search",
-      "taskData": "this file is used to"
+      "taskData": "this file is used to",
+      "deployFolder": "tests/data/hubspot.deploy"
     }
 
 ## Expected echos

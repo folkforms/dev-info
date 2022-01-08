@@ -27,7 +27,8 @@ It will execute an executable and substitute a param
 ## Internal options
 
     {
-      "task": "execute"
+      "task": "execute",
+      "deployFolder": "tests/data/hubspot.deploy"
     }
 
 ## Expected echos

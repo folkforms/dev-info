@@ -28,7 +28,7 @@ It gets the staticRoutesV2 param from the yaml file
 
     {
       "task": "print",
-      "deployFolder": "hubspot.deploy2"
+      "deployFolder": "tests/data/hubspot.deploy2"
     }
 
 ## Expected echos
