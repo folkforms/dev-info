@@ -39,7 +39,7 @@ if(program.opts().listParams) {
 }
 
 if(program.opts().appName) {
-  const appName = params["appName"].exec({ "deployFolder": "hubspot.deploy" });
+  const appName = params["appName"].exec({ "deployFolder": program.opts().deployFolder || "hubspot.deploy" });
   console.info(``);
   console.info(`App name:`);
   console.info(``);
