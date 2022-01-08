@@ -7,6 +7,10 @@ let paramOverrides;
 let options;
 
 const executableParams = (cmd, shellObj, projectDomainsObj = {}, paramOverridesObj = {}, warn = true, optionsObj) => {
+  if(!optionsObj.subParams) {
+    return cmd;
+  }
+
   shell = shellObj;
   projectDomains = projectDomainsObj;
   paramOverrides = paramOverridesObj;

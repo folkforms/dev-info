@@ -19,6 +19,7 @@ program
   .option('-ss, --short-search <search>', 'search descriptions for the given text but print only the paths')
   .option('-d, --data <path>', 'override data path')
   .option('--list-params', 'list all params')
+  .option('--no-sub-params', 'skip parameter substitution')
   .option('--app-name', 'print app name')
   .option('--debug', 'debug mode')
   .option('--deploy-folder <folder>', 'override deploy folder')
@@ -60,6 +61,7 @@ if(program.opts().shortSearch) { task = "shortSearch"; taskData = program.opts()
 const options = {
   task,
   taskData,
+  subParams: program.opts().subParams,
   dryRun: program.opts().dryRun,
   debug: program.opts().debug,
   deployFolder: program.opts().deployFolder,
