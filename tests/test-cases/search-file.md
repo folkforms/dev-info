@@ -33,6 +33,7 @@ Search function finds the given text in a file.
 
 ## Expected echos
 
+    Found matches for 'this file is used to' in the following nodes:
     foo muk (./tests/data/test-file-option.txt):\n\nThis file is used to test the '_file' option.\n\n\n----
 
 ## Expected commands

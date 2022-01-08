@@ -14,7 +14,7 @@ Search function finds the given text in a description.
       "data": {
         "foo": {
           "bar": {
-            "_description": "Bar description toast"
+            "_description": "Bar description"
           },
           "muk": {
             "_description": "Muk description"
@@ -26,15 +26,16 @@ Search function finds the given text in a description.
 ## Internal options
 
     {
-      "task": "search",
-      "taskData": "toast",
+      "task": "shortSearch",
+      "taskData": "description",
       "deployFolder": "tests/data/hubspot.deploy"
     }
 
 ## Expected echos
 
-    Found matches for 'toast' in the following nodes:
-    foo bar:\n\nBar description toast
+    Found matches for 'description' in the following nodes:
+    foo bar
+    foo muk
 
 ## Expected commands
 

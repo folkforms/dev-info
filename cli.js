@@ -16,6 +16,7 @@ program
   .option('-p, --print', 'print descriptions (default)')
   .option('-l, --list', 'print tree even if target node contains a description')
   .option('-s, --search <search>', 'search descriptions for the given text')
+  .option('-ss, --short-search <search>', 'search descriptions for the given text but print only the paths')
   .option('-d, --data <path>', 'override data path')
   .option('--list-params', 'list all params')
   .option('--app-name', 'print app name')
@@ -54,6 +55,7 @@ if(program.opts().dryRun) { task = "execute"; }
 if(program.opts().print) { task = "print"; }
 if(program.opts().list) { task = "list"; }
 if(program.opts().search) { task = "search"; taskData = program.opts().search; }
+if(program.opts().shortSearch) { task = "shortSearch"; taskData = program.opts().shortSearch; }
 
 const options = {
   task,

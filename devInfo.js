@@ -23,8 +23,8 @@ const devInfo = (data, treeSearch, handler, shell, options) => {
   // Make a copy of aliased treeSearch for fuzzy searching
   const treeSearchOriginalForFuzzy = copyArray(treeSearch);
 
-  if(options.task === "search") {
-    return search(data, options.taskData, shell);
+  if(options.task === "search" || options.task === "shortSearch") {
+    return search(data, options.task, options.taskData, shell);
   }
 
   // Get the target node

@@ -1,7 +1,7 @@
 const RecursiveIterator = require("recursive-iterator");
 const fileio = require("@folkforms/file-io");
 
-const search = (data, searchTerm, shell) => {
+const search = (data, task, searchTerm, shell) => {
   const found = [];
   for(let { node, path } of new RecursiveIterator(data)) {
     if(node._description && node._description.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
@@ -20,15 +20,20 @@ const search = (data, searchTerm, shell) => {
   }
   if(found.length > 0) {
     shell.echo(``);
+    shell.echo(`Found matches for '${searchTerm}' in the following nodes:\n`);
     for(let i = 0; i < found.length; i++) {
       const item = found[i];
-      if(!item.file) {
-        shell.echo(`${item.path}:\n\n${item.description}\n`);
-        if(i < found.length - 1) {
-          shell.echo("----\n");
+      if(task === "search") {
+        if(!item.file) {
+          shell.echo(`${item.path}:\n\n${item.description}\n`);
+          if(i < found.length - 1) {
+            shell.echo("----\n");
+          }
+        } else {
+          shell.echo(`${item.path} (${item.file}):\n\n${item.description}\n\n----\n`);
         }
       } else {
-        shell.echo(`${item.path} (${item.file}):\n\n${item.description}\n\n----\n`);
+        shell.echo(item.path);
       }
     };
     return { code: 0 };
