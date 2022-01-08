@@ -17,6 +17,7 @@ const fileConverter = file => {
 
   data._description = trimTrailingEmptyLines(data._description);
   data._description = data._description.join("\n");
+  data._isFile = true;
   return data;
 }
 

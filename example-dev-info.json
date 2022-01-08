@@ -21,6 +21,9 @@
         "_file": "./examplefile-frontend-run.md"
       },
       "run2": {
+        "_file": "./examplefile-frontend-run2.md"
+      },
+      "run3": {
         "_file": "./examplefile.txt"
       },
       "routes": {

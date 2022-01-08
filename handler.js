@@ -43,7 +43,7 @@ const handler = (node, nodeKey, shell, options, dataObj) => {
       }
 
       shell.echo(printNode._description);
-      if(printNode._executable) {
+      if(printNode._executable && !printNode._isFile) {
         shell.echo(``);
         shell.echo(`Executable: ${executableParams(props._executable, shell, projectDomains, paramOverrides, false, options)}`);
       }
