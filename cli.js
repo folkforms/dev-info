@@ -46,6 +46,11 @@ const options = {
   debug: program.opts().debug,
   deployFolder: program.opts().deployFolder,
 };
+Object.keys(options).forEach(key => {
+  if(!options[key]) {
+    delete options[key];
+  }
+});
 
 if(program.opts().listParams) {
   console.info(``);
