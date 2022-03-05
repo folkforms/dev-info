@@ -14,7 +14,6 @@ const handler = (node, nodeKey, shell, options, dataObj, treeSearch) => {
     let props;
     if(node._file) {
       props = fileConverter(node._file);
-      console.log(`#### props = ${JSON.stringify(props)}`);
     } else {
       props = { ...node };
     }
