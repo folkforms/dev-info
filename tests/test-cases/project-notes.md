@@ -50,8 +50,7 @@ It maps the 'projectNotes' param correctly based on the projectDomains value in 
 ## Expected echos
 
     Bar description
-    Notes for correct-app-name:
-    Find `fooId` Foo keyspace > foo table > fooId column
+    Notes: Find `fooId` Foo keyspace > foo table > fooId column
     Executable: Bar executable param=correct-app-domain
 
 ## Expected commands

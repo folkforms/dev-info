@@ -34,6 +34,9 @@ const convertFromMarkdown = lines => {
   for(let i = 0; i < lines.length; i++) {
     if(lines[i].startsWith("## Executable")) {
       data._executable = lines[i+2];
+      lines[i] = "";
+      lines[i+1] = "";
+      lines[i+2] = "";
       data._description = lines;
       break;
     }
@@ -41,6 +44,7 @@ const convertFromMarkdown = lines => {
   for(let i = 0; i < lines.length; i++) {
     if(lines[i].startsWith("Executable: ")) {
       data._executable = lines[i].substring(12);
+      lines[i] = "";
       data._description = lines;
       break;
     }

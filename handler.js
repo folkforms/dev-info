@@ -14,6 +14,7 @@ const handler = (node, nodeKey, shell, options, dataObj, treeSearch) => {
     let props;
     if(node._file) {
       props = fileConverter(node._file);
+      console.log(`#### props = ${JSON.stringify(props)}`);
     } else {
       props = { ...node };
     }
@@ -53,12 +54,11 @@ const handler = (node, nodeKey, shell, options, dataObj, treeSearch) => {
         let projectNote = tree.find(fullData["projectNotes"][appName], treeSearch);
         if(projectNote) {
           shell.echo(``);
-          shell.echo(`Notes for ${appName}:`);
-          shell.echo(projectNote._note);
+          shell.echo(`Notes: ${projectNote._note}`);
         }
       }
 
-      if(printNode._executable && !printNode._isFile) {
+      if(printNode._executable) {
         shell.echo(``);
         shell.echo(`Executable: ${executableParams(props._executable, shell, projectDomains, paramOverrides, false, options)}`);
       }
