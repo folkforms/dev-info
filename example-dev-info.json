@@ -10,6 +10,21 @@
       "foo": "overridden-foo"
     }
   },
+  "projectNotes": {
+    "correct-app-name": {
+      "frontend": {
+        "run": {
+          "_note": "Find `fooId` Foo keyspace > foo table > fooId column"
+        },
+        "run4": {
+          "_note": "run4 notes"
+        },
+        "routes": {
+          "_note": "Some notes specific to correct-app-name frontend routes"
+        }
+      }
+    }
+  },
   "aliases": {
     "frontend": [ "fe", "front-end" ],
     "backend": [ "be", "back-end" ],
@@ -25,6 +40,10 @@
       },
       "run3": {
         "_file": "./examplefile.txt"
+      },
+      "run4": {
+        "_description": "run4 description",
+        "_executable": "run4 executable"
       },
       "routes": {
         "_description": "frontend routes description"

@@ -23,6 +23,7 @@ const devInfo = (data, treeSearch, handler, shell, options) => {
   treeSearch = aliases(data.aliases, treeSearch);
   // Make a copy of aliased treeSearch for fuzzy searching
   const treeSearchOriginalForFuzzy = copyArray(treeSearch);
+  const treeSearchOriginalForProjectNotes = copyArray(treeSearch);
 
   if(options.task === "search" || options.task === "shortSearch") {
     return search(data, options.task, options.taskData, shell);
@@ -49,7 +50,7 @@ const devInfo = (data, treeSearch, handler, shell, options) => {
   }
 
   // Run the command
-  const code = handler(node, lastKey, shell, options, data);
+  const code = handler(node, lastKey, shell, options, data, treeSearchOriginalForProjectNotes);
   return { code };
 }
 

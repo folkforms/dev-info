@@ -59,7 +59,23 @@ Used to provide help text or index all the things you need to remember in a new 
     "domain-two.com": [
       "muk-project"
     ]
-  }
+  },
+  "projectNotes": {
+    "foo-project": {
+      "frontend": {
+        "run": {
+          "_note": "This note only appears for 'frontend run' inside foo-project"
+        }
+      }
+    },
+    "bar-project": {
+      "frontend": {
+        "run": {
+          "_note": "This note only appears for 'frontend run' inside bar-project"
+        }
+      }
+    }
+  },
 }
 ```
 

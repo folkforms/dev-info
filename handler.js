@@ -1,7 +1,10 @@
 const fileConverter = require("./fileConverter");
 const executableParams = require("./executableParams");
+const params = require("./params/params");
+const tree = require("./tree");
 
-const handler = (node, nodeKey, shell, options, dataObj) => {
+const handler = (node, nodeKey, shell, options, dataObj, treeSearch) => {
+  const fullData = dataObj;
   const data = dataObj.data;
   const projectDomains = dataObj.projectDomains;
   const paramOverrides = dataObj.paramOverrides;
@@ -43,6 +46,18 @@ const handler = (node, nodeKey, shell, options, dataObj) => {
       }
 
       shell.echo(printNode._description);
+
+      // Print project note, if any
+      const appName = params["appName"].exec(options)
+      if(fullData["projectNotes"] && fullData["projectNotes"][appName]) {
+        let projectNote = tree.find(fullData["projectNotes"][appName], treeSearch);
+        if(projectNote) {
+          shell.echo(``);
+          shell.echo(`Notes for ${appName}:`);
+          shell.echo(projectNote._note);
+        }
+      }
+
       if(printNode._executable && !printNode._isFile) {
         shell.echo(``);
         shell.echo(`Executable: ${executableParams(props._executable, shell, projectDomains, paramOverrides, false, options)}`);
